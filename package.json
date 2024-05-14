@@ -1,18 +1,24 @@
 {
-  "name": "news-post-preview",
+  "name": "@freecodecamp/hashnode-preview",
   "version": "1.0.0",
-  "description": "Post template for previews",
-  "main": ".eleventy.js",
+  "main": "./src/server.js",
+  "author": "freeCodeCamp.org",
+  "private": true,
+  "description": "Post preview service for Hashnode",
+  "type": "module",
   "engines": {
     "node": ">=20",
     "npm": ">=10"
   },
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "start": "node --watch --trace-warnings ./src/server.js"
   },
   "license": "BSD-3-Clause",
-  "devDependencies": {
-    "@11ty/eleventy": "2.0.1"
+  "dependencies": {
+    "dotenv": "16.4.5",
+    "express": "4.19.2",
+    "graphql-request": "7.0.1",
+    "nunjucks": "3.2.4",
+    "winston": "3.13.0"
   }
 }
