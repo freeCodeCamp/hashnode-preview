@@ -1,11 +1,23 @@
 version: '3.8'
 services:
+  caddy:
+    image: caddy:2.7.6
+    container_name: caddy
+    restart: unless-stopped
+    depends_on:
+      - web
+    networks:
+      - proxy
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    ports:
+      - 80:80
+      - 443:443
   web:
     build: .
     ports:
-      - '3000:3000'
+      - ${PORT:-3000}:3000
     environment:
       - CMS_HOST=${CMS_HOST}
       - NODE_ENV=production
-      - PORT=3000
     restart: unless-stopped

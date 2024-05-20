@@ -1,0 +1,8 @@
+http:// {
+  redir https://{host}{uri} permanent
+}
+
+preview.freecodecamp.org {
+  tls internal
+  reverse_proxy web:3000
+}

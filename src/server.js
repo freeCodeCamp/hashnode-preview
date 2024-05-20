@@ -67,6 +67,32 @@ app.all('*', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   logger.info(`Server is running on port ${PORT}`);
 });
+
+// Handle server errors
+server.on('error', error => {
+  logger.error(`Server error: ${error.message}`);
+  process.exit(1);
+});
+
+// Graceful shutdown
+const gracefulShutdown = signal => {
+  logger.info(`Received ${signal}. Shutting down gracefully...`);
+  server.close(() => {
+    logger.info('Closed out remaining connections.');
+    process.exit(0);
+  });
+
+  // Forcefully shut down after 10 seconds
+  setTimeout(() => {
+    logger.error(
+      'Could not close connections in time, forcefully shutting down'
+    );
+    process.exit(1);
+  }, 10000);
+};
+
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));

@@ -1,9 +1,14 @@
-FROM node:20-alpine
+FROM node:20-alpine as builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm ci --production
 COPY . .
 
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=builder /app .
+
+ENV NODE_ENV=production
 EXPOSE 3000
-CMD ["node", "/app/src/server.js"]
+CMD ["node", "./src/server.js"]
