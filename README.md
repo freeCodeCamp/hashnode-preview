@@ -5,6 +5,16 @@
 This uses Hashnode's GraphQL API and Nunjucks to render an approximate preview
 of a post as it will appear when published live on `/news`.
 
+## Development
+
+> [!WARNING]
+> Please note that changes to the nunjucks templates will not be reflected in the watch mode.
+
+```bash
+npm install
+npm run start
+```
+
 ## Usage
 
 - The app is deployed on DigitalOcean App Platform, and all changes merged to
