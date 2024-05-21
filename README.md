@@ -17,11 +17,3 @@ of a post as it will appear when published live on `/news`.
   docker compose build
   docker compose up -d
   ```
-
-> [!NOTE]
-> Need to set the following environment variables
-
-**Environment Variables**
-
-- `CMS_HOST`: The Hashnode Publication URL
-- `PORT`: The port to run the server on
