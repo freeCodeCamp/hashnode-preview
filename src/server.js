@@ -1,6 +1,7 @@
 import express from 'express';
 import nunjucks from 'nunjucks';
 import winston from 'winston';
+import morgan from 'morgan';
 import { fetchContent } from './fetch-content.js';
 import 'dotenv/config';
 
@@ -16,11 +17,18 @@ nunjucks.configure('src/templates', {
 const logger = winston.createLogger({
   level: 'info',
   format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json()
+    winston.format.colorize(),
+    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    winston.format.printf(({ timestamp, level, message }) => {
+      return `${timestamp} [${level}] ${message}`;
+    })
   ),
   transports: [new winston.transports.Console()]
 });
+const morganStream = {
+  write: message => logger.info(message.trim())
+};
+app.use(morgan('tiny', { stream: morganStream }));
 
 // Cache control middleware
 const noCache = (req, res, next) => {
