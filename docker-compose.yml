@@ -18,6 +18,5 @@ services:
     ports:
       - ${PORT:-3000}:3000
     environment:
-      - CMS_HOST=${CMS_HOST}
       - NODE_ENV=production
     restart: unless-stopped

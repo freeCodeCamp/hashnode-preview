@@ -43,30 +43,39 @@ const noCache = (req, res, next) => {
 app.use(noCache);
 
 // Main route
-app.get('/', async (req, res) => {
-  const { slug } = req.query;
-  if (!slug) {
-    logger.warn('Request without slug attempted.');
-    return res
-      .status(400)
-      .render('error.njk', { error: 'Slug not found in URI' });
-  }
+app.get(
+  '/:id',
+  async (req, res, next) => {
+    const { id } = req.params;
+    const isValidObjectId = id.length === 24 && /^[0-9a-fA-F]{24}$/.test(id);
 
-  try {
-    const post = await fetchContent(process.env.CMS_HOST, slug);
-    if (!post) {
-      logger.warn(`Post not found for slug: ${slug}`);
+    if (!isValidObjectId) {
+      logger.warn(`Invalid ObjectId: ${id}`);
       return res
-        .status(404)
-        .render('error.njk', { error: 'Post not found in CMS' });
+        .status(400)
+        .render('error.njk', { error: 'Invalid ObjectId in URI' });
     }
-    logger.info(`Post retrieved successfully for slug: ${slug}`);
-    res.render('index.njk', { post });
-  } catch (error) {
-    logger.error(`Error retrieving content for slug ${slug}: ${error.message}`);
-    res.status(500).render('error.njk', { error: 'Internal Server Error' });
+    next();
+  },
+  async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const post = await fetchContent(id);
+      if (!post) {
+        logger.warn(`Post not found for id: ${id}`);
+        return res
+          .status(404)
+          .render('error.njk', { error: 'Post not found in CMS' });
+      }
+      logger.info(`Post retrieved successfully for id: ${id}`);
+      res.render('index.njk', { post });
+    } catch (error) {
+      logger.error(`Error retrieving content for id ${id}: ${error.message}`);
+      res.status(500).render('error.njk', { error: 'Internal Server Error' });
+    }
   }
-});
+);
 
 // Handle all other routes
 app.all('*', (req, res) => {
