@@ -61,13 +61,18 @@ app.get(
     const { id } = req.params;
 
     try {
-      const post = await fetchContent(id);
+      let post = await fetchContent(id);
+
+      // Set the publishedAt date to the updated date because the published date is not available in the CMS
+      post.publishedAt = new Date(post.updatedAt).toLocaleDateString();
+
       if (!post) {
         logger.warn(`Post not found for id: ${id}`);
         return res
           .status(404)
           .render('error.njk', { error: 'Post not found in CMS' });
       }
+
       logger.info(`Post retrieved successfully for id: ${id}`);
       res.render('index.njk', { post });
     } catch (error) {
