@@ -2718,6 +2718,95 @@
     here because we can't generate that data before building the page #}
     {# END: block seo #}
 
+    {# Include Twitter script in case there are any embeded Tweets #}
+    <script defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    {# Use Hashnode's Webembeds API to render embeds on the client #}
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        /* eslint-disable no-undef */
+        try {
+          const hashnodeEmbedAnchorEls = [...document.querySelectorAll('div.embed-wrapper a.embed-card')];
+
+          await hashnodeEmbedAnchorEls.map(async anchorEl => {
+            const embedURL = anchorEl.href;
+            const res = await fetch(`https://webembeds.com/api/embed?url=${embedURL}`);
+            const json = await res.json();
+            const embedHTML = new DOMParser().parseFromString(json?.data?.output?.html, "text/html").body;
+            // // This method allows script execution
+            // const embedHTML = document.createRange().createContextualFragment(json?.data?.output?.html);
+            const iframe = embedHTML.querySelector('iframe');
+            const script = embedHTML.querySelector('script');
+            const webembedWrapper = embedHTML.querySelector('div.webembed-wrapper');
+
+            // It's not possible to dynamically embed a Gist script without a
+            // lengthy workaround, so return early and show what Hashnode gives
+            // us by default
+            if (/https:\/\/gist\.github\.com\//.test(embedURL)) return;
+
+            if (iframe) {
+              if (/https:\/\/open\.spotify\.com\//.test(iframe.src)) {
+                const embedPath = new URL(iframe.src).pathname;
+                const [_, type] = embedPath.split('/').filter(Boolean);
+
+                iframe.setAttribute('height', type === 'playlist' ? 352 : 152);
+                iframe.setAttribute('style', type === 'playlist' ? 'aspect-ratio: 16 / 9; width: 100%; height: auto;' : ''); 
+              } else if (/https:\/\/anchor\.fm\//.test(iframe.src)) {
+                // Assume the podcast is an episode and use the same height as the Spotify embed
+                // for a single episode
+                iframe.setAttribute('width', '100%');
+                iframe.setAttribute('height', 152);
+                iframe.removeAttribute('style');
+              } else if (/https:\/\/giphy\.com\/embed\//.test(iframe.src)) {
+                const giphyWrapper = document.createElement('div');
+
+                giphyWrapper.setAttribute('style', 'width: 100%; height: 0; padding-bottom: 125%; position: relative;');
+                giphyWrapper.setAttribute('class', 'giphy-wrapper');
+                iframe.setAttribute('width', '100%');
+                iframe.setAttribute('height', '100%');
+                iframe.setAttribute('style', 'position: absolute');
+
+                iframe.parentElement.replaceChildren(giphyWrapper);
+                giphyWrapper.replaceChildren(iframe);
+              } else {
+                iframe.setAttribute('style', 'aspect-ratio: 16 / 9; width: 100%; height: auto;');
+              }
+            }
+            
+            // Some embeds come with a webembed wrapper, so strip those out if they exist
+            anchorEl.parentElement.replaceChildren(
+              ...(webembedWrapper ?
+                webembedWrapper.childNodes :
+                embedHTML.childNodes)
+            )
+          });
+
+          // Now that iframe embeds have possibly been added to the page,
+          // wrap them if necessary for spacing, then enable lazy loading
+          const iframes = document.getElementsByTagName('iframe');
+
+          [...iframes].forEach(iframe => {
+            // For iframes on Hashnode that were copy and pasted into an HTML block,
+            // wrap them in a div similar to how Hashnode does for links in embed blocks
+            if (
+              !['embed-wrapper', 'giphy-wrapper'].some(className =>
+                iframe?.parentElement?.classList.contains(className)
+              )
+            ) {
+              const embedWrapper = document.createElement('div');
+
+              embedWrapper.classList.add('embed-wrapper');
+              iframe.parentElement.replaceChild(embedWrapper, iframe);
+              embedWrapper.appendChild(iframe);
+            }
+
+            iframe.setAttribute('loading', 'lazy');
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    </script>
+
     <meta name="generator" content="Eleventy"/>
   </head>
   <body class="home-template">
