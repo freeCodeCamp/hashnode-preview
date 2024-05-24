@@ -1,7 +1,9 @@
 import express from 'express';
+import helmet from 'helmet';
 import nunjucks from 'nunjucks';
 import winston from 'winston';
 import morgan from 'morgan';
+import rateLimit from 'express-rate-limit';
 import { fetchContent } from './fetch-content.js';
 import 'dotenv/config';
 
@@ -29,6 +31,50 @@ const morganStream = {
   write: message => logger.info(message.trim())
 };
 app.use(morgan('tiny', { stream: morganStream }));
+
+// Security headers using Helmet
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", 'data:', '*.freecodecamp.org', 'cdn.hashnode.com'],
+        connectSrc: ["'self'"],
+        fontSrc: ["'self'", 'data:'],
+        objectSrc: ["'none'"],
+        upgradeInsecureRequests: [],
+        frameAncestors: ["'self'", 'https://hashnode.com']
+      }
+    },
+    referrerPolicy: { policy: 'no-referrer' },
+    featurePolicy: {
+      features: {
+        fullscreen: ["'self'"],
+        vibrate: ["'none'"],
+        payment: ["'none'"]
+      }
+    }
+  })
+);
+
+// Middleware to set X-Frame-Options header
+app.use((req, res, next) => {
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  next();
+});
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.'
+});
+app.use(limiter);
+
+// Body size limit
+app.use(express.json({ limit: '10kb' }));
 
 // Cache control middleware
 const noCache = (req, res, next) => {
