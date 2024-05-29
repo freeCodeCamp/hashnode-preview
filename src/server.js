@@ -38,13 +38,42 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", 'https://webembeds.com'],
+        styleSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          'https://fonts.googleapis.com',
+          'https://cdn.freecodecamp.org'
+        ],
         imgSrc: ["'self'", 'data:', '*.freecodecamp.org', 'cdn.hashnode.com'],
-        connectSrc: ["'self'"],
-        fontSrc: ["'self'", 'data:'],
+        connectSrc: [
+          "'self'",
+          'https://webembeds.com',
+          'https://api.spotify.com',
+          'https://api.github.com',
+          'https://api.twitter.com',
+          'https://api.codesandbox.io'
+        ],
+        fontSrc: ["'self'", 'data:', 'https://fonts.gstatic.com'],
         objectSrc: ["'none'"],
         upgradeInsecureRequests: [],
+        frameSrc: [
+          "'self'",
+          'https://www.youtube.com',
+          'https://webembeds.com',
+          'https://vimeo.com',
+          'https://codepen.io',
+          'https://codesandbox.io',
+          'https://twitter.com',
+          'https://x.com',
+          'https://gist.github.com',
+          'https://glitch.com',
+          'https://soundcloud.com',
+          'https://anchor.fm',
+          'https://open.spotify.com',
+          'https://giphy.com',
+          'https://runkit.com'
+        ],
         frameAncestors: ["'self'", 'https://hashnode.com']
       }
     },
