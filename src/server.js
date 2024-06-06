@@ -123,44 +123,33 @@ const noCache = (req, res, next) => {
 app.use(noCache);
 
 // Main route
-app.get(
-  '/:id',
-  async (req, res, next) => {
-    const { id } = req.params;
-    const isValidObjectId = id.length === 24 && /^[0-9a-fA-F]{24}$/.test(id);
+app.get('/:idOrSlug', async (req, res) => {
+  const { idOrSlug } = req.params;
 
-    if (!isValidObjectId) {
-      logger.warn(`Invalid ObjectId: ${id}`);
+  try {
+    let post = await fetchContent(idOrSlug);
+
+    if (!post) {
+      logger.warn(`Post not found for id / slug: ${idOrSlug}`);
       return res
-        .status(400)
-        .render('error.njk', { error: 'Invalid ObjectId in URI' });
+        .status(404)
+        .render('error.njk', { error: 'Post not found in CMS' });
     }
-    next();
-  },
-  async (req, res) => {
-    const { id } = req.params;
 
-    try {
-      let post = await fetchContent(id);
+    logger.info(`Post retrieved successfully for id / slug: ${idOrSlug}`);
 
-      // Set the publishedAt date to the updated date because the published date is not available in the CMS
+    // Since drafts have no published date, set the publishedAt date to the updatedAt date
+    if (!post.publishedAt)
       post.publishedAt = new Date(post.updatedAt).toLocaleDateString();
 
-      if (!post) {
-        logger.warn(`Post not found for id: ${id}`);
-        return res
-          .status(404)
-          .render('error.njk', { error: 'Post not found in CMS' });
-      }
-
-      logger.info(`Post retrieved successfully for id: ${id}`);
-      res.render('index.njk', { post });
-    } catch (error) {
-      logger.error(`Error retrieving content for id ${id}: ${error.message}`);
-      res.status(500).render('error.njk', { error: 'Internal Server Error' });
-    }
+    res.render('index.njk', { post });
+  } catch (error) {
+    logger.error(
+      `Error retrieving content for id / slug ${idOrSlug}: ${error.message}`
+    );
+    res.status(500).render('error.njk', { error: 'Internal Server Error' });
   }
-);
+});
 
 // Handle all other routes
 app.all('*', (req, res) => {
