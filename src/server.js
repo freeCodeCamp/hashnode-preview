@@ -38,7 +38,12 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", 'https://webembeds.com'],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          'https://webembeds.com',
+          'https://cdn.freecodecamp.org'
+        ],
         styleSrc: [
           "'self'",
           "'unsafe-inline'",
