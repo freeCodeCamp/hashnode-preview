@@ -9,6 +9,9 @@ import 'dotenv/config';
 
 const app = express();
 
+// Set trust proxy
+app.set('trust proxy', true);
+
 // Configure nunjucks
 nunjucks.configure('src/templates', {
   autoescape: true,
