@@ -58,18 +58,23 @@ const postQuery = gql`
 export async function fetchContent(idOrSlug) {
   const isValidObjectId =
     idOrSlug.length === 24 && /^[0-9a-fA-F]{24}$/.test(idOrSlug);
+  const HASHNODE_HOST = process.env.HASHNODE_HOST || 'handle.hashnode.dev';
 
-  if (isValidObjectId) {
-    const { draft } = await request(endpoint, draftQuery, { id: idOrSlug });
-
-    return draft;
+  try {
+    // Fetch if it's a draft from the drafts endpoint
+    if (isValidObjectId) {
+      const response = await request(endpoint, draftQuery, { id: idOrSlug });
+      return response.draft;
+      // Fetch if it's a post from the publication endpoint
+    } else {
+      const response = await request(endpoint, postQuery, {
+        host: HASHNODE_HOST,
+        slug: idOrSlug
+      });
+      return response.publication.post;
+    }
+  } catch (error) {
+    console.error('Error fetching content:', error);
+    throw error;
   }
-
-  const HASHNODE_HOST = process.env.HOST || 'handle.hashnode.dev';
-  const { publication } = await request(endpoint, postQuery, {
-    host: HASHNODE_HOST,
-    slug: idOrSlug
-  });
-
-  return publication.post;
 }
