@@ -1918,6 +1918,11 @@
           order: 2;
         }
       }
+      p:has(mjx-container.MathJax) {
+        display: inline-block;
+        max-width: 100%;
+        overflow: auto;
+      }
       .under-header-content .author-profile-image,
       .under-header-content .avatar-wrapper {
         z-index: 10;
@@ -2658,6 +2663,20 @@
       });
     </script>
     {# END: /assets/js/client-dayjs.js #}
+
+    {# START: block mathjax #}
+    {% for tag in post.tags %}
+      {% if ((tag.slug | lower) === 'mathjax') %}
+        <script
+          type="text/javascript"
+          id="MathJax-script"
+          data-test-label="mathjax-script"
+          src="https://cdn.freecodecamp.org/news-assets/mathjax/3.2.2/tex-mml-chtml.min.js"
+          defer
+        ></script>
+      {% endif %}
+    {% endfor %}
+    {# END: block mathjax #}
 
     <link
       rel="icon"
