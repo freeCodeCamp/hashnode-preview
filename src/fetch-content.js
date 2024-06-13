@@ -35,6 +35,18 @@ const draftQuery = gql`
   query GetDraft($id: ObjectId!) {
     draft(id: $id) {
       ${commonFields}
+      tags: tagsV2 {
+        __typename
+          ... on Tag {
+          id
+          name
+          slug
+        }
+        ... on DraftBaseTag {
+          name
+          slug
+        }
+      }
     }
   }
 `;
