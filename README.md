@@ -15,7 +15,7 @@ pnpm install
 pnpm run start
 ```
 
-## Usage
+## Deployment
 
 - The app is deployed on DigitalOcean App Platform, and all changes merged to
   the `main` branch are deployed using the
