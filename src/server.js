@@ -106,6 +106,11 @@ app.use((req, res, next) => {
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: req => {
+    return req.headers['x-forwarded-for'] || 'localhost';
+  },
   message: 'Too many requests from this IP, please try again later.'
 });
 app.use(limiter);
@@ -124,16 +129,6 @@ const noCache = (_req, res, next) => {
   next();
 };
 app.use(noCache);
-
-app.get('/x-forwarded-for', (request, response) => {
-  if (request.headers['x-forwarded-for']) {
-    response.send(
-      `X-Forwarded-For header value: ${request.headers['x-forwarded-for']}`
-    );
-  } else {
-    response.send('X-Forwarded-For header is not set');
-  }
-});
 
 // Main route
 app.get('/:idOrSlug', async (req, res) => {
