@@ -12,7 +12,7 @@ import cacheControl from './middlewares/cacheControl.js';
 import frameOptions from './middlewares/frameOptions.js';
 import jsonLimit from './middlewares/jsonLimit.js';
 
-import mainRoute from './routes/index.js';
+import mainRoute from './routes/routes.js';
 
 const app = express();
 

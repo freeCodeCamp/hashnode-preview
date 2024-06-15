@@ -4,6 +4,14 @@ import { logger } from '../config/loggerConfig.js';
 
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+  const { slugId } = req.query;
+  if (slugId) {
+    return res.redirect(`/${slugId}`);
+  }
+  res.render('home.njk');
+});
+
 router.get('/:idOrSlug', async (req, res) => {
   const { idOrSlug } = req.params;
 
@@ -22,7 +30,7 @@ router.get('/:idOrSlug', async (req, res) => {
     if (!post.publishedAt)
       post.publishedAt = new Date(post.updatedAt).toLocaleDateString();
 
-    res.render('index.njk', { post });
+    res.render('post.njk', { post });
   } catch (error) {
     logger.error(
       `Error retrieving content for id / slug ${idOrSlug}: ${error.message}`

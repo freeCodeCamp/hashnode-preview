@@ -1,25 +1,24 @@
-{# Note: Update this once we know how data will be sourced #}
-{# % set post = hashnodeRes.data.publication.post %}
-{# Handle cases where no cover image is provided #}
-{% set postCoverImageURL = post.coverImage.url if post.coverImage else 
-  'https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png' %}
+{# Handle cases where no cover image is provided #} {% set postCoverImageURL =
+post.coverImage.url if post.coverImage else
+'https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png'
+%}
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{ post.title }}</title>
-    <meta name="HandheldFriendly" content="True"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Roboto+Mono:wght@400;700&display=swap"
-/>
+    />
 
     {# Prism styles and scripts #}
     <link
@@ -27,23 +26,23 @@
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
       href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/themes/prism.min.css"
-/>
+    />
     <noscript
       ><link
         rel="stylesheet"
         href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/themes/prism.min.css"
-/></noscript>
+    /></noscript>
     <link
       rel="preload"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
       href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/plugins/unescaped-markup/prism-unescaped-markup.min.css"
-/>
+    />
     <noscript
       ><link
         rel="stylesheet"
         href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/plugins/unescaped-markup/prism-unescaped-markup.min.css"
-/></noscript>
+    /></noscript>
     <script
       defer
       src="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/components/prism-core.min.js"
@@ -53,8 +52,7 @@
       src="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"
     ></script>
 
-    {# Minified News Theme Styles #}
-    {# START: /assets/css/global.css #}
+    {# Minified News Theme Styles #} {# START: /assets/css/global.css #}
     <style>
       :root {
         --dark-blue: #002ead;
@@ -170,7 +168,7 @@
       blockquote:before,
       q:after,
       q:before {
-        content: "";
+        content: '';
         content: none;
       }
       table {
@@ -182,7 +180,7 @@
       }
       html {
         box-sizing: border-box;
-        font-family: "Lato",sans-serif;
+        font-family: 'Lato', sans-serif;
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
       }
@@ -222,10 +220,10 @@
         vertical-align: baseline;
       }
       sup {
-        top: -.5em;
+        top: -0.5em;
       }
       sub {
-        bottom: -.25em;
+        bottom: -0.25em;
       }
       img {
         border: 0;
@@ -240,7 +238,7 @@
       kbd,
       pre,
       samp {
-        font-family: "Roboto Mono",monospace;
+        font-family: 'Roboto Mono', monospace;
         font-display: swap;
         font-size: 1em;
       }
@@ -262,9 +260,9 @@
         text-transform: none;
       }
       button,
-      html input[type="button"],
-      input[type="reset"],
-      input[type="submit"] {
+      html input[type='button'],
+      input[type='reset'],
+      input[type='submit'] {
         cursor: pointer;
         -webkit-appearance: button;
       }
@@ -283,21 +281,21 @@
       input:focus {
         outline: none;
       }
-      input[type="checkbox"],
-      input[type="radio"] {
+      input[type='checkbox'],
+      input[type='radio'] {
         box-sizing: border-box;
         padding: 0;
       }
-      input[type="number"]::-webkit-inner-spin-button,
-      input[type="number"]::-webkit-outer-spin-button {
+      input[type='number']::-webkit-inner-spin-button,
+      input[type='number']::-webkit-outer-spin-button {
         height: auto;
       }
-      input[type="search"] {
+      input[type='search'] {
         box-sizing: content-box;
         -webkit-appearance: textfield;
       }
-      input[type="search"]::-webkit-search-cancel-button,
-      input[type="search"]::-webkit-search-decoration {
+      input[type='search']::-webkit-search-cancel-button,
+      input[type='search']::-webkit-search-decoration {
         -webkit-appearance: none;
       }
       legend {
@@ -324,7 +322,7 @@
       body {
         overflow-x: hidden;
         color: var(--gray90);
-        font-family: "Lato",sans-serif;
+        font-family: 'Lato', sans-serif;
         font-size: 1.5rem;
         line-height: 1.6em;
         font-weight: 400;
@@ -334,8 +332,8 @@
         background: #fff;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        -moz-font-feature-settings: "liga" on;
-        font-feature-settings: "liga1" on;
+        -moz-font-feature-settings: 'liga' on;
+        font-feature-settings: 'liga1' on;
       }
       ::selection {
         text-shadow: none;
@@ -430,7 +428,7 @@
         opacity: 0.8;
       }
       blockquote small:before {
-        content: "\2014 \00A0";
+        content: '\2014 \00A0';
       }
       blockquote cite {
         font-weight: 700;
@@ -462,7 +460,7 @@
         font-size: 5rem;
         font-weight: 700;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         h1 {
           font-size: 2.2rem;
         }
@@ -471,7 +469,7 @@
         margin: 1.5em 0 0.5em;
         font-size: 2rem;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         h2 {
           font-size: 1.8rem;
         }
@@ -481,7 +479,7 @@
         font-size: 1.8rem;
         font-weight: 500;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         h3 {
           font-size: 1.7rem;
         }
@@ -502,8 +500,7 @@
         font-weight: 500;
       }
     </style>
-    {# END: /assets/css/global.css #}
-    {# START: /assets/css/screen.css #}
+    {# END: /assets/css/global.css #} {# START: /assets/css/screen.css #}
     <style>
       body {
         background: #fff;
@@ -530,7 +527,7 @@
         flex-grow: 1;
         margin-top: calc(var(--header-height) * 3 + 5px);
       }
-      .under-header-content+.site-main {
+      .under-header-content + .site-main {
         margin-top: 0;
       }
       .outer {
@@ -548,7 +545,7 @@
         color: #fff;
         width: 100%;
         background: var(--theme-color);
-        font-family: "Lato",sans-serif;
+        font-family: 'Lato', sans-serif;
         font-display: swap;
       }
       .site-header.no-image:after,
@@ -586,7 +583,7 @@
         letter-spacing: 0.5px;
         opacity: 0.8;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .site-title {
           font-size: 3.2rem;
         }
@@ -594,7 +591,7 @@
           font-size: 1.8rem;
         }
       }
-      @media (min-width:375px) {
+      @media (min-width: 375px) {
         .nav-padding {
           position: relative;
           padding: 0 15px;
@@ -606,7 +603,7 @@
         justify-content: space-between;
         align-items: flex-start;
         font-size: 1.2em;
-        font-family: Lato,sans-serif;
+        font-family: Lato, sans-serif;
         font-display: swap;
         height: var(--header-height);
         background: var(--theme-color);
@@ -640,7 +637,7 @@
         font-size: 1.7rem;
         line-height: 1em;
         font-weight: 700;
-        letter-spacing: -.5px;
+        letter-spacing: -0.5px;
       }
       .site-nav-logo:hover {
         text-decoration: none;
@@ -690,7 +687,7 @@
         display: none;
         margin-right: 19px;
       }
-      @media (min-width:500px) {
+      @media (min-width: 500px) {
         a.nav-forum {
           display: inline;
         }
@@ -705,7 +702,7 @@
         line-height: 24px;
         text-decoration: none;
         background-color: #feac32;
-        background-image: linear-gradient(#fecc4c,#ffac33);
+        background-image: linear-gradient(#fecc4c, #ffac33);
         border: 3px solid #feac32;
         color: var(--theme-color);
       }
@@ -721,7 +718,7 @@
       }
       .toggle-button-nav:active {
         background-image: none;
-        box-shadow: inset 0 1px 4px rgb(0 0 0 / .3);
+        box-shadow: inset 0 1px 4px rgb(0 0 0 / 0.3);
         text-decoration: none;
       }
       .social-links {
@@ -771,7 +768,7 @@
         height: 2.1rem;
         fill: #fff;
       }
-      @media (max-width:999px) {
+      @media (max-width: 999px) {
         .site-header {
           padding-right: 0;
           padding-left: 0;
@@ -787,7 +784,7 @@
           right: 20px;
         }
       }
-      @media (min-width:1000px) {
+      @media (min-width: 1000px) {
         .site-nav-middle {
           flex: 1 0 20%;
           margin-right: 0;
@@ -869,7 +866,7 @@
         justify-content: flex-start;
       }
       .post-card-excerpt {
-        font-family: "Lato",sans-serif;
+        font-family: 'Lato', sans-serif;
         font-display: swap;
       }
       .post-card-meta {
@@ -946,12 +943,12 @@
         width: 56px;
         height: 56px;
         border: #fff 2px solid;
-        transition: all 0.5s cubic-bezier(.4,.01,.165,.99) 0.7s;
+        transition: all 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99) 0.7s;
       }
-      @media (min-width:800px) {
+      @media (min-width: 800px) {
         .author-list:hover .moving-avatar {
           margin: 0;
-          transition: all 0.3s cubic-bezier(.4,.01,.165,.99);
+          transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
         }
       }
       .meta-content {
@@ -987,12 +984,12 @@
         display: flex;
         flex-direction: column;
       }
-      @media (min-width:450px) {
+      @media (min-width: 450px) {
         .post-card-image {
           height: 300px;
         }
       }
-      @media (min-width:768px) {
+      @media (min-width: 768px) {
         .post-feed {
           margin: auto;
           max-width: 875px;
@@ -1034,7 +1031,7 @@
       .home-template .site-header:after {
         display: none;
       }
-      @media (max-width:650px) {
+      @media (max-width: 650px) {
         .post-feed {
           padding-top: 5vw;
         }
@@ -1055,7 +1052,7 @@
         padding: 0 0 3vw;
         max-width: 1040px;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-header {
           padding: 0 0 8vw;
         }
@@ -1092,12 +1089,12 @@
         max-height: 800px;
         object-fit: cover;
       }
-      @media (max-width:1170px) {
+      @media (max-width: 1170px) {
         .post-full-image img {
           height: auto;
         }
       }
-      @media (max-width:700px) {
+      @media (max-width: 700px) {
         .post-full-image {
           display: none;
         }
@@ -1107,26 +1104,26 @@
         margin: 0 auto;
         padding: 70px 150px 0;
         min-height: 230px;
-        font-family: "Lato",sans-serif;
+        font-family: 'Lato', sans-serif;
         font-display: swap;
         font-size: 2.2rem;
         line-height: 1.6em;
         background: #fff;
       }
       .post-full-content:lang(ja) {
-        font-family: "Lato","Noto Sans JP",sans-serif;
+        font-family: 'Lato', 'Noto Sans JP', sans-serif;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-content {
           padding: 0;
         }
       }
-      @media (max-width:800px) {
+      @media (max-width: 800px) {
         .post-full-content {
           font-size: 1.9rem;
         }
       }
-      @media (min-width:501px) and (max-width:999px) {
+      @media (min-width: 501px) and (max-width: 999px) {
         .post-full-content {
           padding: 5vw 7vw 0;
         }
@@ -1189,13 +1186,13 @@
         max-width: 1040px;
         height: auto;
       }
-      @media (max-width:1040px) {
+      @media (max-width: 1040px) {
         .post-full-content img,
         .post-full-content video {
           width: 100%;
         }
       }
-      .post-full-content img+br+small {
+      .post-full-content img + br + small {
         display: block;
         margin-top: -3em;
         margin-bottom: 1.5em;
@@ -1223,7 +1220,7 @@
         padding: 0 5px 2px;
         font-size: 0.8em;
         line-height: 1em;
-        font-weight: 400!important;
+        font-weight: 400 !important;
         background: var(--gray15);
       }
       .post-full-content p code {
@@ -1253,7 +1250,7 @@
         border-top: 1px solid var(--gray15);
       }
       .post-full-content hr:after {
-        content: "";
+        content: '';
         position: absolute;
         top: -15px;
         left: 50%;
@@ -1272,7 +1269,8 @@
       .post-full-content h5,
       .post-full-content h6 {
         color: var(--gray85);
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-display: swap;
         font-weight: 700;
         margin: 0.5em 0 0.2em;
@@ -1280,7 +1278,7 @@
       .post-full-content h1 {
         font-size: 4.6rem;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-content h1 {
           font-size: 3.2rem;
         }
@@ -1288,7 +1286,7 @@
       .post-full-content h2 {
         font-size: 3.6rem;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-content h2 {
           font-size: 3rem;
         }
@@ -1296,7 +1294,7 @@
       .post-full-content h3 {
         font-size: 2.8rem;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-content h3 {
           font-size: 2.6rem;
         }
@@ -1304,7 +1302,7 @@
       .post-full-content h4 {
         font-size: 2.6rem;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-content h4 {
           font-size: 2.4rem;
         }
@@ -1312,7 +1310,7 @@
       .post-full-content h5 {
         font-size: 2.4rem;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-content h5 {
           font-size: 2.2rem;
         }
@@ -1320,7 +1318,7 @@
       .post-full-content h6 {
         font-size: 2.2rem;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-content h6 {
           font-size: 2rem;
         }
@@ -1335,13 +1333,13 @@
         margin: 0;
       }
       .footnote-backref {
-        color: var(--dark-blue)!important;
+        color: var(--dark-blue) !important;
         font-size: 1.2rem;
         font-weight: 700;
-        text-decoration: none!important;
-        box-shadow: none!important;
+        text-decoration: none !important;
+        box-shadow: none !important;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-meta {
           font-size: 1.2rem;
           line-height: 1.3em;
@@ -1365,7 +1363,8 @@
         width: auto;
         border-spacing: 0;
         border-collapse: collapse;
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-display: swap;
         font-size: 1.6rem;
         white-space: nowrap;
@@ -1373,18 +1372,25 @@
       }
       .post-full-content table {
         -webkit-overflow-scrolling: touch;
-        background: radial-gradient(ellipse at left,rgb(0 0 0 / .2) 0%,#fff0 75%) 0 center,radial-gradient(ellipse at right,rgb(0 0 0 / .2) 0%,#fff0 75%) 100% center;
-        background-attachment: scroll,scroll;
-        background-size: 10px 100%,10px 100%;
+        background: radial-gradient(
+              ellipse at left,
+              rgb(0 0 0 / 0.2) 0%,
+              #fff0 75%
+            )
+            0 center,
+          radial-gradient(ellipse at right, rgb(0 0 0 / 0.2) 0%, #fff0 75%) 100%
+            center;
+        background-attachment: scroll, scroll;
+        background-size: 10px 100%, 10px 100%;
         background-repeat: no-repeat;
       }
       .post-full-content table td:first-child {
-        background-image: linear-gradient(to right,#ffffff 50%,#fff0 100%);
+        background-image: linear-gradient(to right, #ffffff 50%, #fff0 100%);
         background-size: 20px 100%;
         background-repeat: no-repeat;
       }
       .post-full-content table td:last-child {
-        background-image: linear-gradient(to left,#ffffff 50%,#fff0 100%);
+        background-image: linear-gradient(to left, #ffffff 50%, #fff0 100%);
         background-position: 100% 0;
         background-size: 20px 100%;
         background-repeat: no-repeat;
@@ -1520,14 +1526,15 @@
         font-size: 1.4rem;
         letter-spacing: 0.2px;
         background: #fff;
-        box-shadow: rgb(39 44 49 / .08) 0 12px 26px,rgb(39 44 49 / .03) 1px 3px 8px;
+        box-shadow: rgb(39 44 49 / 0.08) 0 12px 26px,
+          rgb(39 44 49 / 0.03) 1px 3px 8px;
         opacity: 0;
-        transition: all 0.3s cubic-bezier(.4,.01,.165,.99);
-        transform: scale(.98) translateY(15px);
+        transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+        transform: scale(0.98) translateY(15px);
         pointer-events: none;
       }
       .author-list-item .author-card:before {
-        content: "";
+        content: '';
         position: absolute;
         top: 100%;
         left: 50%;
@@ -1558,7 +1565,7 @@
       .author-card .bio {
         padding: 20px 20px 0;
       }
-      @media (max-width:650px) {
+      @media (max-width: 650px) {
         .author-list-item .author-card {
           display: none;
         }
@@ -1575,7 +1582,7 @@
         width: 88px;
         height: 88px;
         border: none;
-        background: rgb(229 239 245 / .1);
+        background: rgb(229 239 245 / 0.1);
       }
       .basic-info .avatar-wrapper svg {
         margin: 0;
@@ -1601,7 +1608,7 @@
         background-size: cover;
       }
       .read-next-card:before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         right: 0;
@@ -1658,7 +1665,7 @@
         font-size: 1.6rem;
         line-height: 1.25em;
         font-weight: 200;
-        letter-spacing: -.5px;
+        letter-spacing: -0.5px;
       }
       .read-next-card-content li a {
         display: block;
@@ -1717,7 +1724,11 @@
       .post-full-content .kg-image {
         max-width: 100%;
       }
-      .post-full-image+.post-full-content .kg-content *:first-child .kg-image {
+      .post-full-image
+        + .post-full-content
+        .kg-content
+        *:first-child
+        .kg-image {
         width: 100%;
       }
       .post-full-content .kg-width-wide .kg-image {
@@ -1767,7 +1778,7 @@
         width: 100%;
         height: 100%;
       }
-      @media (max-width:1040px) {
+      @media (max-width: 1040px) {
         .post-full-content .kg-width-full .kg-image {
           width: 100vw;
         }
@@ -1795,10 +1806,10 @@
       .kg-gallery-image:not(:first-of-type) {
         margin: 0 0 0 0.75em;
       }
-      .kg-gallery-card+.kg-gallery-card,
-      .kg-gallery-card+.kg-image-card.kg-width-wide,
-      .kg-image-card.kg-width-wide+.kg-gallery-card,
-      .kg-image-card.kg-width-wide+.kg-image-card.kg-width-wide {
+      .kg-gallery-card + .kg-gallery-card,
+      .kg-gallery-card + .kg-image-card.kg-width-wide,
+      .kg-image-card.kg-width-wide + .kg-gallery-card,
+      .kg-image-card.kg-width-wide + .kg-image-card.kg-width-wide {
         margin: -2.25em 0 3em;
       }
       .kg-code-card {
@@ -1811,24 +1822,25 @@
         background: var(--gray00);
         width: 100%;
       }
-      .kg-card+.kg-bookmark-card {
+      .kg-card + .kg-bookmark-card {
         margin-top: 0;
       }
       .kg-bookmark-card {
         background: var(--gray00);
         width: 100%;
       }
-      .kg-card+.kg-bookmark-card {
+      .kg-card + .kg-bookmark-card {
         margin-top: 0;
       }
       .post-full-content .kg-bookmark-container {
         display: flex;
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-display: swap;
         color: var(--gray90);
         text-decoration: none;
         min-height: 148px;
-        box-shadow: 0 2px 5px -1px rgb(0 0 0 / .15),0 0 1px rgb(0 0 0 / .09);
+        box-shadow: 0 2px 5px -1px rgb(0 0 0 / 0.15), 0 0 1px rgb(0 0 0 / 0.09);
         border-radius: 3px;
       }
       .kg-bookmark-content {
@@ -1892,7 +1904,7 @@
         line-height: 1.5em;
       }
       .kg-bookmark-author:after {
-        content: "•";
+        content: '•';
         margin: 0 6px;
       }
       .kg-bookmark-publisher {
@@ -1902,7 +1914,7 @@
         white-space: nowrap;
         max-width: 240px;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .post-full-content .kg-bookmark-container {
           flex-direction: column;
         }
@@ -1917,11 +1929,6 @@
         .kg-bookmark-content {
           order: 2;
         }
-      }
-      p:has(mjx-container.MathJax) {
-        display: inline-block;
-        max-width: 100%;
-        overflow: auto;
       }
       .under-header-content .author-profile-image,
       .under-header-content .avatar-wrapper {
@@ -1950,7 +1957,7 @@
         justify-content: center;
         align-items: center;
         margin: 0 0 10px;
-        font-family: "Lato",sans-serif;
+        font-family: 'Lato', sans-serif;
         font-display: swap;
         font-style: italic;
       }
@@ -1966,7 +1973,7 @@
       .under-header-content .social-link:first-of-type {
         padding-left: 4px;
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .under-header-content .author-bio {
           font-size: 1.8rem;
           line-height: 1.15em;
@@ -2005,7 +2012,7 @@
         line-height: 1.3em;
         font-weight: 400;
       }
-      @media (max-width:800px) {
+      @media (max-width: 800px) {
         .error-description {
           margin: 5px 0 0;
           font-size: 1.8rem;
@@ -2027,11 +2034,11 @@
       }
       .footer-top {
         display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(30.5em,1fr));
+        grid-template-columns: repeat(auto-fit, minmax(30.5em, 1fr));
       }
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         .footer-top {
-          grid-template-columns: repeat(auto-fit,minmax(19em,1fr));
+          grid-template-columns: repeat(auto-fit, minmax(19em, 1fr));
         }
       }
       .footer-bottom,
@@ -2065,7 +2072,7 @@
         padding: 0;
         margin: 0;
         display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(11em,1fr));
+        grid-template-columns: repeat(auto-fit, minmax(11em, 1fr));
         grid-column-gap: 3rem;
         grid-row-gap: 0.5rem;
       }
@@ -2073,14 +2080,14 @@
         padding: 0;
         margin: 0;
       }
-      @media (max-width:1400px) {
+      @media (max-width: 1400px) {
         .trending-guides-articles {
-          grid-template-columns: repeat(auto-fit,minmax(12em,1fr));
+          grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
         }
       }
-      @media (max-width:800px) {
+      @media (max-width: 800px) {
         .trending-guides-articles {
-          grid-template-columns: repeat(auto-fit,minmax(13em,1fr));
+          grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
         }
       }
       .footer-row {
@@ -2136,7 +2143,7 @@
       .footer-bottom .our-nonprofit a {
         padding: 5px 10px;
       }
-      @media (min-width:500px) {
+      @media (min-width: 500px) {
         .footer-col {
           font-size: 15;
         }
@@ -2144,7 +2151,7 @@
           flex-direction: row;
         }
       }
-      @media (min-width:800px) {
+      @media (min-width: 800px) {
         .footer-col {
           font-size: 16.5;
         }
@@ -2152,7 +2159,7 @@
           padding: 5px;
         }
       }
-      @media (min-width:1200px) {
+      @media (min-width: 1200px) {
         .footer-desc-col {
           flex: 1 0 45%;
         }
@@ -2256,7 +2263,7 @@
         background: var(--gray90);
         color: var(--gray10);
       }
-      @media (min-width:700px) {
+      @media (min-width: 700px) {
         a.donation-cta {
           flex-direction: row;
         }
@@ -2303,7 +2310,7 @@
       a.banner:hover span {
         text-decoration: none;
       }
-      @media (min-width:500px) {
+      @media (min-width: 500px) {
         a.banner {
           padding: 10px;
           font-size: 17px;
@@ -2329,13 +2336,13 @@
       .ad-layout .sidebar {
         display: none;
       }
-      @media (min-width:900px) {
+      @media (min-width: 900px) {
         .ad-layout .post-full-content {
           padding: 70px 0 0;
         }
         .ad-layout .post-and-sidebar {
           display: grid;
-          grid-template-columns: minmax(0,1fr) 300px;
+          grid-template-columns: minmax(0, 1fr) 300px;
           gap: 40px;
           margin: 0 auto;
         }
@@ -2368,7 +2375,7 @@
         padding-right: 0;
         padding-left: 15px;
       }
-      @media (min-width:768px) {
+      @media (min-width: 768px) {
         .rtl-layout .post-card .post-card-content-link {
           padding: 0 30px 0 0;
         }
@@ -2376,7 +2383,7 @@
           padding: 0 34px 0 0;
         }
       }
-      @media (max-width:999px) {
+      @media (max-width: 999px) {
         .rtl-layout .site-nav-middle {
           margin-left: auto;
         }
@@ -2402,19 +2409,8 @@
         direction: ltr;
         unicode-bidi: isolate;
       }
-      .post-full-content .embed-wrapper {
-        margin-top: 1.25em;
-        margin-bottom: 1.25em;
-      }
-      .embed-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        overflow-x: hidden;
-      }
     </style>
-    {# END: /assets/css/screen.css #}
-    {# START: /assets/css/search-bar.css #}
+    {# END: /assets/css/screen.css #} {# START: /assets/css/search-bar.css #}
     <style>
       .site-nav-left form {
         display: none;
@@ -2467,7 +2463,7 @@
         height: 14px;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         fill: var(--gray15);
       }
       .algolia-autocomplete {
@@ -2493,10 +2489,16 @@
         border-bottom: 0.75px solid var(--gray45);
         cursor: pointer;
       }
-      .algolia-autocomplete .aa-dropdown-menu .aa-suggestions .aa-suggestion:first-of-type {
+      .algolia-autocomplete
+        .aa-dropdown-menu
+        .aa-suggestions
+        .aa-suggestion:first-of-type {
         border-top: 0.75px solid var(--gray45);
       }
-      .algolia-autocomplete .aa-dropdown-menu .aa-suggestions .aa-suggestion:last-of-type {
+      .algolia-autocomplete
+        .aa-dropdown-menu
+        .aa-suggestions
+        .aa-suggestion:last-of-type {
         border-bottom: none;
       }
       .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
@@ -2602,10 +2604,10 @@
         padding: 0;
         margin: -1px;
         overflow: hidden;
-        clip: rect(0,0,0,0);
+        clip: rect(0, 0, 0, 0);
         border: 0;
       }
-      @media (min-width:1000px) {
+      @media (min-width: 1000px) {
         .site-nav-left form {
           display: flex;
         }
@@ -2628,7 +2630,7 @@
       .rtl-layout #search-input {
         padding: 0 30px 0 10px;
       }
-      @media (min-width:1000px) {
+      @media (min-width: 1000px) {
         .rtl-layout .ais-SearchBox-submit {
           left: auto;
           right: 30px;
@@ -2638,8 +2640,8 @@
         direction: RTL;
       }
     </style>
-    {# END: /assets/css/search-bar.css #}
-    {# Day.js and plugins for localization and formatting #}
+    {# END: /assets/css/search-bar.css #} {# Day.js and plugins for localization
+    and formatting #}
     <script
       defer
       src="https://cdn.freecodecamp.org/news-assets/dayjs/1.10.4/dayjs.min.js"
@@ -2664,179 +2666,70 @@
     </script>
     {# END: /assets/js/client-dayjs.js #}
 
-    {# START: block mathjax #}
-    {% for tag in post.tags %}
-      {% if ((tag.slug | lower) === 'mathjax') %}
-        <script
-          type="text/javascript"
-          id="MathJax-script"
-          data-test-label="mathjax-script"
-          src="https://cdn.freecodecamp.org/news-assets/mathjax/3.2.2/tex-mml-chtml.min.js"
-          defer
-        ></script>
-      {% endif %}
-    {% endfor %}
-    {# END: block mathjax #}
-
     <link
       rel="icon"
       href="https://cdn.freecodecamp.org/universal/favicons/favicon.ico"
       type="image/png"
-/>
-    <meta name="referrer" content="no-referrer-when-downgrade"/>
+    />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
 
-    {# START: block seo #}
+    {# START: block seo #} {% if post.brief %}
+    <meta name="description" content="{{ post.brief }}" />
+    {% endif %} {# Facebook OpenGraph #}
+    <meta property="og:site_name" content="freeCodeCamp.org" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ post.title }}" />
     {% if post.brief %}
-      <meta name="description" content="{{ post.brief }}"/>
-    {% endif %}
-
-    {# Facebook OpenGraph #}
-    <meta property="og:site_name" content="freeCodeCamp.org"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:title" content="{{ post.title }}"/>
-    {% if post.brief %}
-      <meta property="og:description" content="{{ post.brief }}"/>
+    <meta property="og:description" content="{{ post.brief }}" />
     {% endif %}
     <meta
       property="og:url"
       content="www.freecodecamp.org/news/{{ post.slug }}/"
-/>
-    <meta property="og:image" content="{{ postCoverImageURL }}"/>
-    <meta property="article:published_time" content="{{ post.publishedAt }}"/>
+    />
+    <meta property="og:image" content="{{ postCoverImageURL }}" />
+    <meta property="article:published_time" content="{{ post.publishedAt }}" />
     <meta
       property="article:modified_time"
       content="{{ post.updatedAt if post.updatedAt else post.publishedAt }}"
-/>
+    />
     {% for tag in post.tags %}
-      <meta property="article:tag" content="{{ tag.name }}"/>
+    <meta property="article:tag" content="{{ tag.name }}" />
     {% endfor %}
     <meta
       property="article:publisher"
       content="https://www.facebook.com/freecodecamp"
-/>
+    />
     {% if post.author.socialMediaLinks.facebook %}
-      <meta
-        property="article:author"
-        content="{{ post.author.socialMediaLinks.facebook }}"
-/>
-    {% endif %}
-
-    {# Twitter Card #}
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="{{ post.title }}"/>
+    <meta
+      property="article:author"
+      content="{{ post.author.socialMediaLinks.facebook }}"
+    />
+    {% endif %} {# Twitter Card #}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ post.title }}" />
     {% if post.brief %}
-      <meta name="twitter:description" content="{{ post.brief }}"/>
+    <meta name="twitter:description" content="{{ post.brief }}" />
     {% endif %}
     <meta
       name="twitter:url"
       content="https://www.freecodecamp.org/news/{{ post.slug }}/"
-/>
-    <meta name="twitter:image" content="{{ postCoverImageURL }}"/>
-    <meta name="twitter:label1" content="Written by"/>
-    <meta name="twitter:data1" content="{{ post.author.name }}"/>
-    <meta name="twitter:label2" content="Filed under"/>
-    <meta name="twitter:data2" content="{{ post.tags | join(', ', 'name') }}"/>
-    <meta name="twitter:site" content="https://twitter.com/freecodecamp/"/>
+    />
+    <meta name="twitter:image" content="{{ postCoverImageURL }}" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="{{ post.author.name }}" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="{{ post.tags | join(', ', 'name') }}" />
+    <meta name="twitter:site" content="https://twitter.com/freecodecamp/" />
     {% if post.author.socialMediaLinks.twitter %}
-      <meta
-        name="twitter:creator"
-        content="{{ post.author.socialMediaLinks.twitter }}"
-/>
-    {% endif %}
-    {# Note: We don't include og:image:width and og:image:height
-    here because we can't generate that data before building the page #}
-    {# END: block seo #}
+    <meta
+      name="twitter:creator"
+      content="{{ post.author.socialMediaLinks.twitter }}"
+    />
+    {% endif %} {# Note: We don't include og:image:width and og:image:height
+    here because we can't generate that data before building the page #} {# END:
+    block seo #}
 
-    {# Include Twitter script in case there are any embeded Tweets #}
-    <script defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    {# Use Hashnode's Webembeds API to render embeds on the client #}
-    <script>
-      document.addEventListener('DOMContentLoaded', async () => {
-        /* eslint-disable no-undef */
-        try {
-          const hashnodeEmbedAnchorEls = [...document.querySelectorAll('div.embed-wrapper a.embed-card')];
-
-          await hashnodeEmbedAnchorEls.map(async anchorEl => {
-            const embedURL = anchorEl.href;
-            const res = await fetch(`https://webembeds.com/api/embed?url=${embedURL}`);
-            const json = await res.json();
-            const embedHTML = new DOMParser().parseFromString(json?.data?.output?.html, "text/html").body;
-            // // This method allows script execution
-            // const embedHTML = document.createRange().createContextualFragment(json?.data?.output?.html);
-            const iframe = embedHTML.querySelector('iframe');
-            const script = embedHTML.querySelector('script');
-            const webembedWrapper = embedHTML.querySelector('div.webembed-wrapper');
-
-            // It's not possible to dynamically embed a Gist script without a
-            // lengthy workaround, so return early and show what Hashnode gives
-            // us by default
-            if (/https:\/\/gist\.github\.com\//.test(embedURL)) return;
-
-            if (iframe) {
-              if (/https:\/\/open\.spotify\.com\//.test(iframe.src)) {
-                const embedPath = new URL(iframe.src).pathname;
-                const [_, type] = embedPath.split('/').filter(Boolean);
-
-                iframe.setAttribute('height', type === 'playlist' ? 352 : 152);
-                iframe.setAttribute('style', type === 'playlist' ? 'aspect-ratio: 16 / 9; width: 100%; height: auto;' : ''); 
-              } else if (/https:\/\/anchor\.fm\//.test(iframe.src)) {
-                // Assume the podcast is an episode and use the same height as the Spotify embed
-                // for a single episode
-                iframe.setAttribute('width', '100%');
-                iframe.setAttribute('height', 152);
-                iframe.removeAttribute('style');
-              } else if (/https:\/\/giphy\.com\/embed\//.test(iframe.src)) {
-                const giphyWrapper = document.createElement('div');
-
-                giphyWrapper.setAttribute('style', 'width: 100%; height: 0; padding-bottom: 125%; position: relative;');
-                giphyWrapper.setAttribute('class', 'giphy-wrapper');
-                iframe.setAttribute('width', '100%');
-                iframe.setAttribute('height', '100%');
-                iframe.setAttribute('style', 'position: absolute');
-
-                iframe.parentElement.replaceChildren(giphyWrapper);
-                giphyWrapper.replaceChildren(iframe);
-              } else {
-                iframe.setAttribute('style', 'aspect-ratio: 16 / 9; width: 100%; height: auto;');
-              }
-            }
-            
-            // Some embeds come with a webembed wrapper, so strip those out if they exist
-            anchorEl.parentElement.replaceChildren(
-              ...(webembedWrapper ?
-                webembedWrapper.childNodes :
-                embedHTML.childNodes)
-            )
-          });
-
-          // Now that iframe embeds have possibly been added to the page,
-          // wrap them if necessary for spacing, then enable lazy loading
-          const iframes = document.getElementsByTagName('iframe');
-
-          [...iframes].forEach(iframe => {
-            // For iframes on Hashnode that were copy and pasted into an HTML block,
-            // wrap them in a div similar to how Hashnode does for links in embed blocks
-            if (
-              !['embed-wrapper', 'giphy-wrapper'].some(className =>
-                iframe?.parentElement?.classList.contains(className)
-              )
-            ) {
-              const embedWrapper = document.createElement('div');
-
-              embedWrapper.classList.add('embed-wrapper');
-              iframe.parentElement.replaceChild(embedWrapper, iframe);
-              embedWrapper.appendChild(iframe);
-            }
-
-            iframe.setAttribute('loading', 'lazy');
-          });
-        } catch (err) {
-          console.log(err);
-        }
-      });
-    </script>
-
-    <meta name="generator" content="Eleventy"/>
+    <meta name="generator" content="Eleventy" />
   </head>
   <body class="home-template">
     <div class="site-wrapper">
@@ -2850,7 +2743,7 @@
                 type="search"
                 placeholder="Search our tutorials"
                 id="search-input"
-/>
+              />
               <button type="submit" class="ais-SearchBox-submit">
                 {# START: partials/icons/magnifying-glass.njk #}
                 <svg
@@ -2862,7 +2755,7 @@
                 >
                   <path
                     d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"
-/>
+                  />
                 </svg>
                 {# END: partials/icons/magnifying-glass.njk #}
                 <span class="fcc_sr_only">Submit your search query</span>
@@ -2879,7 +2772,7 @@
             ><img
               src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
               alt="freeCodeCamp.org"
-/></a>
+          /></a>
         </div>
         <div class="site-nav-right">
           <div class="nav-group">
@@ -2904,8 +2797,7 @@
           </div>
         </div>
       </nav>
-      {# END: partials/site-nav.njk #}
-      {# START: partials/banner.njk #}
+      {# END: partials/site-nav.njk #} {# START: partials/banner.njk #}
       <a
         class="banner"
         id="banner"
@@ -2917,232 +2809,45 @@
           Learn to code — <span>free 3,000-hour curriculum</span>
         </p>
       </a>
-      {# END: partials/banner.njk #}
-      {# START: layouts/post.njk #}
+      {# END: partials/banner.njk #} {# START: layouts/post.njk #}
       <main id="site-main" class="post-template site-main outer">
-        <div class="inner ad-layout">
-          <article class="post-full post">
-            <header class="post-full-header">
-              <section class="post-full-meta">
-                <time
-                  class="post-full-meta-date"
-                  datetime="{{ post.publishedAt }}"
-                >
-                  {# Replicate publishedDate shortcode here #}
-                  <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                      const postPublishedTimeEl = document.querySelector('.post-full-meta time.post-full-meta-date',);
-                      const dateStr = postPublishedTimeEl.getAttribute('datetime');
-                      const dateObj = dayjs(dateStr);
-
-                      postPublishedTimeEl.innerText = dateObj.format('LL');
-                    });
-                  </script>
-                </time>
-                {% if post.tags[0] %}
-                  <span class="date-divider">/</span>
-                  <a
-                    dir="ltr"
-                    href="https://www.freecodecamp.org/news/tag/{{ post.tags[0].slug }}/"
-                  >
-                    #{{ post.tags[0].name }}
-                  </a>
-                {% endif %}
-              </section>
-              <h1 class="post-full-title">{{ post.title }}</h1>
-            </header>
+        <article class="post-full post">
+          <section class="post-full-content">
             <div
-              class="post-full-author-header"
-              data-test-label="author-header-no-bio"
+              style="
+                text-align: center;
+                height: 60vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
             >
-              {% if post.primary_author.name != "freeCodeCamp.org" %}
-                {# TODO: Update so original author / translator bylines show in previews #}
-                {# START: partials/byline.njk, no bio #}
-                <section class="author-card" data-test-label="author-card">
-                  {% if post.author.profilePicture %}
-                    {# START: image shortcode #}
-                    <img
-                      srcset="{{ post.author.profilePicture }} 60w"
-                      sizes="60px"
-                      src="{{ post.author.profilePicture }}"
-                      class="author-profile-image"
-                      alt="{{ post.author.name }}"
-                      onerror="this.style.display='none'"
-                      loading="lazy"
-                      data-test-label="author-profile-image"
-/>
-                    {# END: image shortcode #}
-                  {% else %}
-                    <span class="avatar-wrapper">
-                      {# START: partials/icons/avatar.njk #}
-                      <svg
-                        role="img"
-                        style="pointer-events: none"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        data-test-label="avatar"
-                      >
-                        <title>{{ post.author.name }}</title>
-                        <g fill="none" fill-rule="evenodd">
-                          <path
-                            d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z"
-                            fill="#FFF"
-/>
-                        </g>
-                      </svg>
-                      {# END: partials/icons/avatar.njk #}
-                    </span>
-                  {% endif %}
-                  <section class="author-card-content author-card-content-no-bio">
-                    <span class="author-card-name">
-                      <a
-                        href="https://www.freecodecamp.org/news/author/{{ post.author.username }}/"
-                        data-test-label="profile-link"
-                      >
-                        {{ post.author.name }}
-                      </a>
-                    </span>
-                  </section>
-                </section>
-                {# END: partials/byline.njk, no bio #}
-              {% endif %}
+              <h2>Hashnode Preview for freeCodeCamp Developer News</h2>
+              <p>
+                A preview service for freeCodeCamp.org news for posts on
+                Hashnode (headless) CMS
+              </p>
+              <p>
+                This uses HashNode's GraphQL API and Nunjucks to render an
+                approximate preview of a post as it will appear when published
+                live on <code>/news</code>.
+              </p>
             </div>
-            <figure class="post-full-image">
-              {# START: feature image shortcode #}
-              <picture>
-                <source
-                  media="(max-width: 700px)"
-                  sizes="1px"
-                  srcset="
-                    data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w
-                  "
-/>
-                <source
-                  media="(min-width: 701px)"
-                  sizes="(max-width: 800px) 400px, (max-width: 1170px) 700px, 1400px"
-                  srcset="{{ postCoverImageURL }}"
-/>
-                <img
-                  onerror="this.style.display='none'"
-                  alt="Learn How to Deploy Web Apps to Digital Ocean [Full Course]"
-                  data-test-label="feature-image"
-                  data-cfsrc="{{ postCoverImageURL }}"
-                  src="{{ postCoverImageURL }}"
-/>
-              </picture>
-              {# END: feature image shortcode #}
-            </figure>
-            <section class="post-full-content">
-              <div class="post-and-sidebar">
-                <section class="post-content" data-test-label="post-content">
-                  {{ post.content.html | safe }}
-                </section>
-                <div class="sidebar">
-                  {# START: partials/ad.njk #}
-                  <div class="ad-wrapper" data-test-label="ad-wrapper">
-                    <div class="ad-text" data-test-label="ad-text">
-                      ADVERTISEMENT
-                    </div>
-                    <ins
-                      class="adsbygoogle"
-                      style="display: block; height: 280px"
-                      data-ad-format="auto"
-                      data-full-width-responsive="true"
-                    ></ins>
-                  </div>
-                  {# END: partials/ad.njk #}
-                </div>
-              </div>
-              <hr/>
-              <div
-                class="post-full-author-header"
-                data-test-label="author-header-with-bio"
-              >
-                {# TODO: Update so original author / translator bylines show in previews #}
-                {# START: partials/byline.njk, show bio #}
-                <section class="author-card" data-test-label="author-card">
-                  {% if post.author.profilePicture %}
-                    {# START: image shortcode #}
-                    <img
-                      srcset="{{ post.author.profilePicture }} 60w"
-                      sizes="60px"
-                      src="{{ post.author.profilePicture }}"
-                      class="author-profile-image"
-                      alt="{{ post.author.name }}"
-                      onerror="this.style.display='none'"
-                      loading="lazy"
-                     data-test-label="author-profile-image"
-/>
-                    {# END: image shortcode #}
-                  {% else %}
-                    <span class="avatar-wrapper">
-                      {# START: partials/icons/avatar.njk #}
-                      <svg
-                      role="img"
-                      style="pointer-events: none"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      data-test-label="avatar"
-                    >
-                        <title>{{ post.author.name }}</title>
-                        <g fill="none" fill-rule="evenodd">
-                          <path
-                          d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z"
-                          fill="#FFF"
-/>
-                        </g>
-                      </svg>
-                      {# END: partials/icons/avatar.njk #}
-                    </span>
-                  {% endif %}
-                  <section class="author-card-content">
-                    <span class="author-card-name">
-                      <a
-                        href="https://www.freecodecamp.org/news/author/{{ post.author.username }}/"
-                        data-test-label="profile-link"
-                      >
-                        {{ post.author.name }}
-                      </a>
-                    </span>
-                    {% if post.author.bio.text %}
-                      <p data-test-label="author-bio">
-                        {{ post.author.bio.text }}
-                      </p>
-                    {% else %}
-                      <p data-test-label="default-bio">
-                        Read
-                        <a
-                          href="https://www.freecodecamp.org/news/author/{{ post.author.username }}/"
-                          >more posts</a
-                        >.
-                      </p>
-                    {% endif %}
-                  </section>
-                </section>
-                {# END: partials/byline.njk, show bio #}
-              </div>
-              <hr/>
-            </section>
-            <div class="banner-ad bottom">
-              {# START: partials/ad.njk #}
-              <div class="ad-wrapper" data-test-label="ad-wrapper">
-                <div class="ad-text" data-test-label="ad-text">
-                  ADVERTISEMENT
-                </div>
-                <ins
-                  class="adsbygoogle"
-                  style="display: block; height: 280px"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"
-                ></ins>
-              </div>
-              {# END: partials/ad.njk #}
-            </div>
-          </article>
-        </div>
+            <form action="/" method="GET">
+              <label for="slugId">Insert Hashnode draft ID or slug ID:</label>
+              <input
+                type="text"
+                id="slugId"
+                name="slugId"
+                aria-label="Insert Hashnode draft ID or slug ID"
+                required
+              />
+              <input type="submit" value="Preview Article" />
+            </form>
+          </section>
+        </article>
       </main>
-      {# END: layouts/post.njk #}
-      {# START: /partials/footer.njk #}
+      {# END: layouts/post.njk #} {# START: /partials/footer.njk #}
       <footer class="site-footer">
         <div class="footer-top">
           <div class="footer-desc-col">
@@ -3279,7 +2984,7 @@
                         src="https://cdn.freecodecamp.org/platform/universal/apple-store-badge.svg"
                         lang="en"
                         alt="Download on the App Store"
-/>
+                      />
                     </a>
                   </li>
                   <li>
@@ -3292,7 +2997,7 @@
                         src="https://cdn.freecodecamp.org/platform/universal/google-play-badge.svg"
                         lang="en"
                         alt="Get it on Google Play"
-/>
+                      />
                     </a>
                   </li>
                 </ul>
