@@ -1,11 +1,18 @@
 import express from 'express';
 import helmet from 'helmet';
 import nunjucks from 'nunjucks';
-import winston from 'winston';
 import morgan from 'morgan';
-import rateLimit from 'express-rate-limit';
-import { fetchContent } from './fetch-content.js';
 import 'dotenv/config';
+
+import { logger, morganStream } from './config/loggerConfig.js';
+import helmetConfig from './config/helmetConfig.js';
+import rateLimitConfig from './config/rateLimitConfig.js';
+
+import cacheControl from './middlewares/cacheControl.js';
+import frameOptions from './middlewares/frameOptions.js';
+import jsonLimit from './middlewares/jsonLimit.js';
+
+import mainRoute from './routes/index.js';
 
 const app = express();
 
@@ -18,146 +25,16 @@ nunjucks.configure('src/templates', {
   express: app
 });
 
-// Logger configuration
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.combine(
-    winston.format.colorize(),
-    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-    winston.format.printf(({ timestamp, level, message }) => {
-      return `${timestamp} [${level}] ${message}`;
-    })
-  ),
-  transports: [new winston.transports.Console()]
-});
-const morganStream = {
-  write: message => logger.info(message.trim())
-};
+// Middleware setup
 app.use(morgan('tiny', { stream: morganStream }));
+app.use(helmet(helmetConfig));
+app.use(frameOptions);
+app.use(rateLimitConfig);
+app.use(jsonLimit);
+app.use(cacheControl);
 
-// Security headers using Helmet
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          'https://webembeds.com',
-          'https://cdn.freecodecamp.org'
-        ],
-        styleSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          'https://fonts.googleapis.com',
-          'https://cdn.freecodecamp.org'
-        ],
-        imgSrc: ["'self'", 'data:', '*.freecodecamp.org', 'cdn.hashnode.com'],
-        connectSrc: [
-          "'self'",
-          'https://webembeds.com',
-          'https://api.spotify.com',
-          'https://api.github.com',
-          'https://api.twitter.com',
-          'https://api.codesandbox.io'
-        ],
-        fontSrc: ["'self'", 'data:', 'https://fonts.gstatic.com'],
-        objectSrc: ["'none'"],
-        upgradeInsecureRequests: [],
-        frameSrc: [
-          "'self'",
-          'https://www.youtube.com',
-          'https://webembeds.com',
-          'https://vimeo.com',
-          'https://codepen.io',
-          'https://codesandbox.io',
-          'https://twitter.com',
-          'https://x.com',
-          'https://gist.github.com',
-          'https://glitch.com',
-          'https://soundcloud.com',
-          'https://anchor.fm',
-          'https://open.spotify.com',
-          'https://giphy.com',
-          'https://runkit.com'
-        ],
-        frameAncestors: ["'self'", 'https://hashnode.com']
-      }
-    },
-    referrerPolicy: { policy: 'no-referrer' },
-    featurePolicy: {
-      features: {
-        fullscreen: ["'self'"],
-        vibrate: ["'none'"],
-        payment: ["'none'"]
-      }
-    }
-  })
-);
-
-// Middleware to set X-Frame-Options header
-app.use((req, res, next) => {
-  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-  next();
-});
-
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
-  standardHeaders: true,
-  legacyHeaders: false,
-  keyGenerator: req => {
-    return req.headers['x-forwarded-for'] || 'localhost';
-  },
-  message: 'Too many requests from this IP, please try again later.'
-});
-app.use(limiter);
-
-// Body size limit
-app.use(express.json({ limit: '10kb' }));
-
-// Cache control middleware
-const noCache = (_req, res, next) => {
-  res.set({
-    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-    Pragma: 'no-cache',
-    Expires: '0',
-    'Surrogate-Control': 'no-store'
-  });
-  next();
-};
-app.use(noCache);
-
-// Main route
-app.get('/:idOrSlug', async (req, res) => {
-  const { idOrSlug } = req.params;
-
-  try {
-    let post = await fetchContent(idOrSlug);
-
-    if (!post) {
-      logger.warn(`Post not found for id / slug: ${idOrSlug}`);
-      return res
-        .status(404)
-        .render('error.njk', { error: 'Post not found in CMS' });
-    }
-
-    logger.info(`Post retrieved successfully for id / slug: ${idOrSlug}`);
-
-    // Since drafts have no published date, set the publishedAt date to the updatedAt date
-    if (!post.publishedAt)
-      post.publishedAt = new Date(post.updatedAt).toLocaleDateString();
-
-    res.render('index.njk', { post });
-  } catch (error) {
-    logger.error(
-      `Error retrieving content for id / slug ${idOrSlug}: ${error.message}`
-    );
-    res.status(500).render('error.njk', { error: 'Internal Server Error' });
-  }
-});
+// Route setup
+app.use(mainRoute);
 
 // Handle all other routes
 app.all('*', (_req, res) => {
@@ -184,7 +61,6 @@ const gracefulShutdown = signal => {
     process.exit(0);
   });
 
-  // Forcefully shut down after 10 seconds
   setTimeout(() => {
     logger.error(
       'Could not close connections in time, forcefully shutting down'
