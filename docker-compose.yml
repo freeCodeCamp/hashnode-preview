@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   caddy:
     image: caddy:2.8.4
@@ -15,8 +14,11 @@ services:
       - 443:443
   web:
     build: .
-    ports:
-      - ${PORT:-3000}:3000
     environment:
       - NODE_ENV=production
     restart: unless-stopped
+    networks:
+      - proxy
+
+networks:
+  proxy:
