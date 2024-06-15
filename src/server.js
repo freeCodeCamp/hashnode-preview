@@ -114,7 +114,7 @@ app.use(limiter);
 app.use(express.json({ limit: '10kb' }));
 
 // Cache control middleware
-const noCache = (req, res, next) => {
+const noCache = (_req, res, next) => {
   res.set({
     'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
     Pragma: 'no-cache',
@@ -124,6 +124,16 @@ const noCache = (req, res, next) => {
   next();
 };
 app.use(noCache);
+
+app.get('/x-forwarded-for', (request, response) => {
+  if (request.headers['x-forwarded-for']) {
+    response.send(
+      `X-Forwarded-For header value: ${request.headers['x-forwarded-for']}`
+    );
+  } else {
+    response.send('X-Forwarded-For header is not set');
+  }
+});
 
 // Main route
 app.get('/:idOrSlug', async (req, res) => {
@@ -155,7 +165,7 @@ app.get('/:idOrSlug', async (req, res) => {
 });
 
 // Handle all other routes
-app.all('*', (req, res) => {
+app.all('*', (_req, res) => {
   logger.warn('Invalid URI request attempted.');
   res.status(404).render('error.njk', { error: 'Invalid URI Requested' });
 });
