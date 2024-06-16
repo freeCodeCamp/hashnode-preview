@@ -4,15 +4,15 @@ import nunjucks from 'nunjucks';
 import morgan from 'morgan';
 import 'dotenv/config';
 
-import { logger, morganStream } from './config/loggerConfig.js';
-import helmetConfig from './config/helmetConfig.js';
-import rateLimitConfig from './config/rateLimitConfig.js';
+import { logger, morganStream } from './config/logger.js';
+import helmetConfig from './config/helmet.js';
+import rateLimitConfig from './config/rate-limit.js';
 
-import cacheControl from './middlewares/cacheControl.js';
-import frameOptions from './middlewares/frameOptions.js';
-import jsonLimit from './middlewares/jsonLimit.js';
+import cacheControl from './middlewares/cache-control.js';
+import frameOptions from './middlewares/frame-options.js';
+import jsonLimit from './middlewares/json-limit.js';
 
-import mainRoute from './routes/routes.js';
+import router from './routes/routes.js';
 
 const app = express();
 
@@ -34,7 +34,7 @@ app.use(jsonLimit);
 app.use(cacheControl);
 
 // Route setup
-app.use(mainRoute);
+app.use(router);
 
 // Handle all other routes
 app.all('*', (_req, res) => {

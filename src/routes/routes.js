@@ -1,10 +1,10 @@
 import express from 'express';
 import { fetchContent } from '../fetch-content.js';
-import { logger } from '../config/loggerConfig.js';
+import { logger } from '../config/logger.js';
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   const { slugId } = req.query;
   if (slugId) {
     return res.redirect(`/${slugId}`);
