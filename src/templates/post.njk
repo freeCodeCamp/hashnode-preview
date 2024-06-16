@@ -1,26 +1,27 @@
-{# Note: Update this once we know how data will be sourced #} {# % set post =
+{# Note: Update this once we know how data will be sourced #}
+{# % set post =
 hashnodeRes.data.publication.post %} {# Handle cases where no cover image is
-provided #} {% set postCoverImageURL = post.coverImage.url if post.coverImage
-else
-'https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png'
-%}
+provided #}
+{% set postCoverImageURL = post.coverImage.url if post.coverImage
+else 
+  'https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png' %}
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>{{ post.title }}</title>
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
       rel="preload"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Roboto+Mono:wght@400;700&display=swap"
-    />
+/>
 
     {# Prism styles and scripts #}
     <link
@@ -28,23 +29,23 @@ else
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
       href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/themes/prism.min.css"
-    />
+/>
     <noscript
       ><link
         rel="stylesheet"
         href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/themes/prism.min.css"
-    /></noscript>
+/></noscript>
     <link
       rel="preload"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
       href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/plugins/unescaped-markup/prism-unescaped-markup.min.css"
-    />
+/>
     <noscript
       ><link
         rel="stylesheet"
         href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/plugins/unescaped-markup/prism-unescaped-markup.min.css"
-    /></noscript>
+/></noscript>
     <script
       defer
       src="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/components/prism-core.min.js"
@@ -54,7 +55,8 @@ else
       src="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"
     ></script>
 
-    {# Minified News Theme Styles #} {# START: /assets/css/global.css #}
+    {# Minified News Theme Styles #}
+    {# START: /assets/css/global.css #}
     <style>
       :root {
         --dark-blue: #002ead;
@@ -502,7 +504,8 @@ else
         font-weight: 500;
       }
     </style>
-    {# END: /assets/css/global.css #} {# START: /assets/css/screen.css #}
+    {# END: /assets/css/global.css #}
+    {# START: /assets/css/screen.css #}
     <style>
       body {
         background: #fff;
@@ -1271,8 +1274,7 @@ else
       .post-full-content h5,
       .post-full-content h6 {
         color: var(--gray85);
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-display: swap;
         font-weight: 700;
         margin: 0.5em 0 0.2em;
@@ -1365,8 +1367,7 @@ else
         width: auto;
         border-spacing: 0;
         border-collapse: collapse;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-display: swap;
         font-size: 1.6rem;
         white-space: nowrap;
@@ -1374,14 +1375,7 @@ else
       }
       .post-full-content table {
         -webkit-overflow-scrolling: touch;
-        background: radial-gradient(
-              ellipse at left,
-              rgb(0 0 0 / 0.2) 0%,
-              #fff0 75%
-            )
-            0 center,
-          radial-gradient(ellipse at right, rgb(0 0 0 / 0.2) 0%, #fff0 75%) 100%
-            center;
+        background: radial-gradient(ellipse at left, rgb(0 0 0 / 0.2) 0%, #fff0 75%) 0 center, radial-gradient(ellipse at right, rgb(0 0 0 / 0.2) 0%, #fff0 75%) 100% center;
         background-attachment: scroll, scroll;
         background-size: 10px 100%, 10px 100%;
         background-repeat: no-repeat;
@@ -1528,8 +1522,7 @@ else
         font-size: 1.4rem;
         letter-spacing: 0.2px;
         background: #fff;
-        box-shadow: rgb(39 44 49 / 0.08) 0 12px 26px,
-          rgb(39 44 49 / 0.03) 1px 3px 8px;
+        box-shadow: rgb(39 44 49 / 0.08) 0 12px 26px, rgb(39 44 49 / 0.03) 1px 3px 8px;
         opacity: 0;
         transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
         transform: scale(0.98) translateY(15px);
@@ -1726,11 +1719,7 @@ else
       .post-full-content .kg-image {
         max-width: 100%;
       }
-      .post-full-image
-        + .post-full-content
-        .kg-content
-        *:first-child
-        .kg-image {
+      .post-full-image + .post-full-content .kg-content *:first-child .kg-image {
         width: 100%;
       }
       .post-full-content .kg-width-wide .kg-image {
@@ -1836,8 +1825,7 @@ else
       }
       .post-full-content .kg-bookmark-container {
         display: flex;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-display: swap;
         color: var(--gray90);
         text-decoration: none;
@@ -2427,7 +2415,8 @@ else
         overflow-x: hidden;
       }
     </style>
-    {# END: /assets/css/screen.css #} {# START: /assets/css/search-bar.css #}
+    {# END: /assets/css/screen.css #}
+    {# START: /assets/css/search-bar.css #}
     <style>
       .site-nav-left form {
         display: none;
@@ -2506,16 +2495,10 @@ else
         border-bottom: 0.75px solid var(--gray45);
         cursor: pointer;
       }
-      .algolia-autocomplete
-        .aa-dropdown-menu
-        .aa-suggestions
-        .aa-suggestion:first-of-type {
+      .algolia-autocomplete .aa-dropdown-menu .aa-suggestions .aa-suggestion:first-of-type {
         border-top: 0.75px solid var(--gray45);
       }
-      .algolia-autocomplete
-        .aa-dropdown-menu
-        .aa-suggestions
-        .aa-suggestion:last-of-type {
+      .algolia-autocomplete .aa-dropdown-menu .aa-suggestions .aa-suggestion:last-of-type {
         border-bottom: none;
       }
       .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
@@ -2657,7 +2640,8 @@ else
         direction: RTL;
       }
     </style>
-    {# END: /assets/css/search-bar.css #} {# Day.js and plugins for localization
+    {# END: /assets/css/search-bar.css #}
+    {# Day.js and plugins for localization
     and formatting #}
     <script
       defer
@@ -2681,79 +2665,89 @@ else
         dayjs.extend(dayjs_plugin_relativeTime);
       });
     </script>
-    {# END: /assets/js/client-dayjs.js #} {# START: block mathjax #} {% for tag
-    in post.tags %} {% if ((tag.slug | lower) === 'mathjax') %}
-    <script
+    {# END: /assets/js/client-dayjs.js #}
+    {# START: block mathjax #}
+    {% for tag in post.tags %}
+      {% if ((tag.slug | lower) === 'mathjax') %}
+        <script
       type="text/javascript"
       id="MathJax-script"
       data-test-label="mathjax-script"
       src="https://cdn.freecodecamp.org/news-assets/mathjax/3.2.2/tex-mml-chtml.min.js"
       defer
     ></script>
-    {% endif %} {% endfor %} {# END: block mathjax #}
+      {% endif %}
+    {% endfor %}
+    {# END: block mathjax #}
 
     <link
       rel="icon"
       href="https://cdn.freecodecamp.org/universal/favicons/favicon.ico"
       type="image/png"
-    />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
+/>
+    <meta name="referrer" content="no-referrer-when-downgrade"/>
 
-    {# START: block seo #} {% if post.brief %}
-    <meta name="description" content="{{ post.brief }}" />
-    {% endif %} {# Facebook OpenGraph #}
-    <meta property="og:site_name" content="freeCodeCamp.org" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{{ post.title }}" />
+    {# START: block seo #}
     {% if post.brief %}
-    <meta property="og:description" content="{{ post.brief }}" />
+      <meta name="description" content="{{ post.brief }}"/>
+    {% endif %}
+    {# Facebook OpenGraph #}
+    <meta property="og:site_name" content="freeCodeCamp.org"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ post.title }}"/>
+    {% if post.brief %}
+      <meta property="og:description" content="{{ post.brief }}"/>
     {% endif %}
     <meta
       property="og:url"
       content="www.freecodecamp.org/news/{{ post.slug }}/"
-    />
-    <meta property="og:image" content="{{ postCoverImageURL }}" />
-    <meta property="article:published_time" content="{{ post.publishedAt }}" />
+/>
+    <meta property="og:image" content="{{ postCoverImageURL }}"/>
+    <meta property="article:published_time" content="{{ post.publishedAt }}"/>
     <meta
       property="article:modified_time"
       content="{{ post.updatedAt if post.updatedAt else post.publishedAt }}"
-    />
+/>
     {% for tag in post.tags %}
-    <meta property="article:tag" content="{{ tag.name }}" />
+      <meta property="article:tag" content="{{ tag.name }}"/>
     {% endfor %}
     <meta
       property="article:publisher"
       content="https://www.facebook.com/freecodecamp"
-    />
+/>
     {% if post.author.socialMediaLinks.facebook %}
-    <meta
+      <meta
       property="article:author"
       content="{{ post.author.socialMediaLinks.facebook }}"
-    />
-    {% endif %} {# Twitter Card #}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ post.title }}" />
+/>
+    {% endif %}
+    {# Twitter Card #}
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="{{ post.title }}"/>
     {% if post.brief %}
-    <meta name="twitter:description" content="{{ post.brief }}" />
+      <meta name="twitter:description" content="{{ post.brief }}"/>
     {% endif %}
     <meta
       name="twitter:url"
       content="https://www.freecodecamp.org/news/{{ post.slug }}/"
-    />
-    <meta name="twitter:image" content="{{ postCoverImageURL }}" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="{{ post.author.name }}" />
-    <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="{{ post.tags | join(', ', 'name') }}" />
-    <meta name="twitter:site" content="https://twitter.com/freecodecamp/" />
+/>
+    <meta name="twitter:image" content="{{ postCoverImageURL }}"/>
+    <meta name="twitter:label1" content="Written by"/>
+    <meta name="twitter:data1" content="{{ post.author.name }}"/>
+    <meta name="twitter:label2" content="Filed under"/>
+    <meta name="twitter:data2" content="{{ post.tags | join(', ', 'name') }}"/>
+    <meta name="twitter:site" content="https://twitter.com/freecodecamp/"/>
     {% if post.author.socialMediaLinks.twitter %}
-    <meta
+      <meta
       name="twitter:creator"
       content="{{ post.author.socialMediaLinks.twitter }}"
-    />
-    {% endif %} {# Note: We don't include og:image:width and og:image:height
-    here because we can't generate that data before building the page #} {# END:
-    block seo #} {# Include Twitter script in case there are any embeded Tweets
+/>
+    {% endif %}
+    {# Note: We don't include og:image:width and og:image:height
+    here because we can't generate that data before building the page #}
+    {# END:
+    block seo #}
+    {# Include Twitter script in case there are any embeded Tweets
     #}
     <script
       defer
@@ -2765,45 +2759,47 @@ else
       document.addEventListener('DOMContentLoaded', async () => {
         /* eslint-disable no-undef */
         try {
-          const hashnodeEmbedAnchorEls = [
-            ...document.querySelectorAll('div.embed-wrapper a.embed-card')
-          ];
+          const hashnodeEmbedAnchorEls = [...document.querySelectorAll('div.embed-wrapper a.embed-card')];
 
           await hashnodeEmbedAnchorEls.map(async anchorEl => {
             const embedURL = anchorEl.href;
-            const res = await fetch(
-              `https://webembeds.com/api/embed?url=${embedURL}`
-            );
+            const res = await fetch(`https://webembeds.com/api/embed?url=${embedURL}`);
             const json = await res.json();
-            const embedHTML = new DOMParser().parseFromString(
-              json?.data?.output?.html,
-              'text/html'
-            ).body;
-            // // This method allows script execution
+            const embedHTML = new DOMParser()
+              .parseFromString(
+                json
+                ?.data
+                  ?.output
+                    ?.html,
+              'text/html')
+              .body;
+            //  This method allows script execution
             // const embedHTML = document.createRange().createContextualFragment(json?.data?.output?.html);
             const iframe = embedHTML.querySelector('iframe');
             const script = embedHTML.querySelector('script');
-            const webembedWrapper = embedHTML.querySelector(
-              'div.webembed-wrapper'
-            );
+            const webembedWrapper = embedHTML.querySelector('div.webembed-wrapper');
 
             // It's not possible to dynamically embed a Gist script without a
             // lengthy workaround, so return early and show what Hashnode gives
             // us by default
-            if (/https:\/\/gist\.github\.com\//.test(embedURL)) return;
-
+            if (/https:\/\/gist\.github\.com\//.test(embedURL)) 
+              return;
+            
             if (iframe) {
               if (/https:\/\/open\.spotify\.com\//.test(iframe.src)) {
                 const embedPath = new URL(iframe.src).pathname;
-                const [_, type] = embedPath.split('/').filter(Boolean);
+                const [_, type] = embedPath
+                  .split('/')
+                  .filter(Boolean);
 
-                iframe.setAttribute('height', type === 'playlist' ? 352 : 152);
                 iframe.setAttribute(
-                  'style',
-                  type === 'playlist'
-                    ? 'aspect-ratio: 16 / 9; width: 100%; height: auto;'
-                    : ''
-                );
+                  'height', type === 'playlist'
+                  ? 352
+                  : 152);
+                iframe.setAttribute(
+                  'style', type === 'playlist'
+                  ? 'aspect-ratio: 16 / 9; width: 100%; height: auto;'
+                  : '');
               } else if (/https:\/\/anchor\.fm\//.test(iframe.src)) {
                 // Assume the podcast is an episode and use the same height as the Spotify embed
                 // for a single episode
@@ -2813,31 +2809,28 @@ else
               } else if (/https:\/\/giphy\.com\/embed\//.test(iframe.src)) {
                 const giphyWrapper = document.createElement('div');
 
-                giphyWrapper.setAttribute(
-                  'style',
-                  'width: 100%; height: 0; padding-bottom: 125%; position: relative;'
-                );
+                giphyWrapper.setAttribute('style', 'width: 100%; height: 0; padding-bottom: 125%; position: relative;');
                 giphyWrapper.setAttribute('class', 'giphy-wrapper');
                 iframe.setAttribute('width', '100%');
                 iframe.setAttribute('height', '100%');
                 iframe.setAttribute('style', 'position: absolute');
 
-                iframe.parentElement.replaceChildren(giphyWrapper);
+                iframe
+                  .parentElement
+                  .replaceChildren(giphyWrapper);
                 giphyWrapper.replaceChildren(iframe);
               } else {
-                iframe.setAttribute(
-                  'style',
-                  'aspect-ratio: 16 / 9; width: 100%; height: auto;'
-                );
+                iframe.setAttribute('style', 'aspect-ratio: 16 / 9; width: 100%; height: auto;');
               }
             }
 
             // Some embeds come with a webembed wrapper, so strip those out if they exist
-            anchorEl.parentElement.replaceChildren(
-              ...(webembedWrapper
+            anchorEl
+              .parentElement
+              .replaceChildren(...(
+                webembedWrapper
                 ? webembedWrapper.childNodes
-                : embedHTML.childNodes)
-            );
+                : embedHTML.childNodes));
           });
 
           // Now that iframe embeds have possibly been added to the page,
@@ -2847,15 +2840,18 @@ else
           [...iframes].forEach(iframe => {
             // For iframes on Hashnode that were copy and pasted into an HTML block,
             // wrap them in a div similar to how Hashnode does for links in embed blocks
-            if (
-              !['embed-wrapper', 'giphy-wrapper'].some(className =>
-                iframe?.parentElement?.classList.contains(className)
-              )
-            ) {
+            if (!['embed-wrapper', 'giphy-wrapper'].some(
+              className => iframe
+              ?.parentElement
+                ?.classList.contains(className))) {
               const embedWrapper = document.createElement('div');
 
-              embedWrapper.classList.add('embed-wrapper');
-              iframe.parentElement.replaceChild(embedWrapper, iframe);
+              embedWrapper
+                .classList
+                .add('embed-wrapper');
+              iframe
+                .parentElement
+                .replaceChild(embedWrapper, iframe);
               embedWrapper.appendChild(iframe);
             }
 
@@ -2867,7 +2863,7 @@ else
       });
     </script>
 
-    <meta name="generator" content="Eleventy" />
+    <meta name="generator" content="Eleventy"/>
   </head>
   <body class="home-template">
     <div class="site-wrapper">
@@ -2881,7 +2877,7 @@ else
                 type="search"
                 placeholder="Search our tutorials"
                 id="search-input"
-              />
+/>
               <button type="submit" class="ais-SearchBox-submit">
                 {# START: partials/icons/magnifying-glass.njk #}
                 <svg
@@ -2893,7 +2889,7 @@ else
                 >
                   <path
                     d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"
-                  />
+/>
                 </svg>
                 {# END: partials/icons/magnifying-glass.njk #}
                 <span class="fcc_sr_only">Submit your search query</span>
@@ -2910,7 +2906,7 @@ else
             ><img
               src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
               alt="freeCodeCamp.org"
-          /></a>
+/></a>
         </div>
         <div class="site-nav-right">
           <div class="nav-group">
@@ -2935,7 +2931,8 @@ else
           </div>
         </div>
       </nav>
-      {# END: partials/site-nav.njk #} {# START: partials/banner.njk #}
+      {# END: partials/site-nav.njk #}
+      {# START: partials/banner.njk #}
       <a
         class="banner"
         id="banner"
@@ -2947,7 +2944,8 @@ else
           Learn to code — <span>free 3,000-hour curriculum</span>
         </p>
       </a>
-      {# END: partials/banner.njk #} {# START: layouts/post.njk #}
+      {# END: partials/banner.njk #}
+      {# START: layouts/post.njk #}
       <main id="site-main" class="post-template site-main outer">
         <div class="inner ad-layout">
           <article class="post-full post">
@@ -2960,11 +2958,8 @@ else
                   {# Replicate publishedDate shortcode here #}
                   <script>
                     document.addEventListener('DOMContentLoaded', () => {
-                      const postPublishedTimeEl = document.querySelector(
-                        '.post-full-meta time.post-full-meta-date'
-                      );
-                      const dateStr =
-                        postPublishedTimeEl.getAttribute('datetime');
+                      const postPublishedTimeEl = document.querySelector('.post-full-meta time.post-full-meta-date');
+                      const dateStr = postPublishedTimeEl.getAttribute('datetime');
                       const dateObj = dayjs(dateStr);
 
                       postPublishedTimeEl.innerText = dateObj.format('LL');
@@ -2972,15 +2967,15 @@ else
                   </script>
                 </time>
                 {% if post.tags[0] %}
-                <span class="date-divider">/</span>
-                <a
+                  <span class="date-divider">/</span>
+                  <a
                   dir="ltr"
                   href="https://www.freecodecamp.org/news/tag/{{
                     post.tags[0].slug
                   }}/"
                 >
                   #{{ post.tags[0].name }}
-                </a>
+                  </a>
                 {% endif %}
               </section>
               <h1 class="post-full-title">{{ post.title }}</h1>
@@ -2989,12 +2984,14 @@ else
               class="post-full-author-header"
               data-test-label="author-header-no-bio"
             >
-              {% if post.primary_author.name != "freeCodeCamp.org" %} {# TODO:
+              {% if post.primary_author.name != "freeCodeCamp.org" %}
+                {# TODO:
               Update so original author / translator bylines show in previews #}
-              {# START: partials/byline.njk, no bio #}
-              <section class="author-card" data-test-label="author-card">
-                {% if post.author.profilePicture %} {# START: image shortcode #}
-                <img
+                {# START: partials/byline.njk, no bio #}
+                <section class="author-card" data-test-label="author-card">
+                  {% if post.author.profilePicture %}
+                    {# START: image shortcode #}
+                    <img
                   srcset="{{ post.author.profilePicture }} 60w"
                   sizes="60px"
                   src="{{ post.author.profilePicture }}"
@@ -3003,42 +3000,44 @@ else
                   onerror="this.style.display='none'"
                   loading="lazy"
                   data-test-label="author-profile-image"
-                />
-                {# END: image shortcode #} {% else %}
-                <span class="avatar-wrapper">
-                  {# START: partials/icons/avatar.njk #}
-                  <svg
+/>
+                    {# END: image shortcode #}
+                  {% else %}
+                    <span class="avatar-wrapper">
+                      {# START: partials/icons/avatar.njk #}
+                      <svg
                     role="img"
                     style="pointer-events: none"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     data-test-label="avatar"
                   >
-                    <title>{{ post.author.name }}</title>
-                    <g fill="none" fill-rule="evenodd">
-                      <path
+                        <title>{{ post.author.name }}</title>
+                        <g fill="none" fill-rule="evenodd">
+                          <path
                         d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z"
                         fill="#FFF"
-                      />
-                    </g>
-                  </svg>
-                  {# END: partials/icons/avatar.njk #}
-                </span>
-                {% endif %}
-                <section class="author-card-content author-card-content-no-bio">
-                  <span class="author-card-name">
-                    <a
+/>
+                        </g>
+                      </svg>
+                      {# END: partials/icons/avatar.njk #}
+                    </span>
+                  {% endif %}
+                  <section class="author-card-content author-card-content-no-bio">
+                    <span class="author-card-name">
+                      <a
                       href="https://www.freecodecamp.org/news/author/{{
                         post.author.username
                       }}/"
                       data-test-label="profile-link"
                     >
-                      {{ post.author.name }}
-                    </a>
-                  </span>
+                        {{ post.author.name }}
+                      </a>
+                    </span>
+                  </section>
                 </section>
-              </section>
-              {# END: partials/byline.njk, no bio #} {% endif %}
+                {# END: partials/byline.njk, no bio #}
+              {% endif %}
             </div>
             <figure class="post-full-image">
               {# START: feature image shortcode #}
@@ -3049,19 +3048,19 @@ else
                   srcset="
                     data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w
                   "
-                />
+/>
                 <source
                   media="(min-width: 701px)"
                   sizes="(max-width: 800px) 400px, (max-width: 1170px) 700px, 1400px"
                   srcset="{{ postCoverImageURL }}"
-                />
+/>
                 <img
                   onerror="this.style.display='none'"
                   alt="Learn How to Deploy Web Apps to Digital Ocean [Full Course]"
                   data-test-label="feature-image"
                   data-cfsrc="{{ postCoverImageURL }}"
                   src="{{ postCoverImageURL }}"
-                />
+/>
               </picture>
               {# END: feature image shortcode #}
             </figure>
@@ -3086,17 +3085,19 @@ else
                   {# END: partials/ad.njk #}
                 </div>
               </div>
-              <hr />
+              <hr/>
               <div
                 class="post-full-author-header"
                 data-test-label="author-header-with-bio"
               >
                 {# TODO: Update so original author / translator bylines show in
-                previews #} {# START: partials/byline.njk, show bio #}
+                previews #}
+                {# START: partials/byline.njk, show bio #}
                 <section class="author-card" data-test-label="author-card">
-                  {% if post.author.profilePicture %} {# START: image shortcode
+                  {% if post.author.profilePicture %}
+                    {# START: image shortcode
                   #}
-                  <img
+                    <img
                     srcset="{{ post.author.profilePicture }} 60w"
                     sizes="60px"
                     src="{{ post.author.profilePicture }}"
@@ -3105,27 +3106,28 @@ else
                     onerror="this.style.display='none'"
                     loading="lazy"
                     data-test-label="author-profile-image"
-                  />
-                  {# END: image shortcode #} {% else %}
-                  <span class="avatar-wrapper">
-                    {# START: partials/icons/avatar.njk #}
-                    <svg
+/>
+                    {# END: image shortcode #}
+                  {% else %}
+                    <span class="avatar-wrapper">
+                      {# START: partials/icons/avatar.njk #}
+                      <svg
                       role="img"
                       style="pointer-events: none"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                       data-test-label="avatar"
                     >
-                      <title>{{ post.author.name }}</title>
-                      <g fill="none" fill-rule="evenodd">
-                        <path
+                        <title>{{ post.author.name }}</title>
+                        <g fill="none" fill-rule="evenodd">
+                          <path
                           d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z"
                           fill="#FFF"
-                        />
-                      </g>
-                    </svg>
-                    {# END: partials/icons/avatar.njk #}
-                  </span>
+/>
+                        </g>
+                      </svg>
+                      {# END: partials/icons/avatar.njk #}
+                    </span>
                   {% endif %}
                   <section class="author-card-content">
                     <span class="author-card-name">
@@ -3139,11 +3141,11 @@ else
                       </a>
                     </span>
                     {% if post.author.bio.text %}
-                    <p data-test-label="author-bio">
-                      {{ post.author.bio.text }}
-                    </p>
+                      <p data-test-label="author-bio">
+                        {{ post.author.bio.text }}
+                      </p>
                     {% else %}
-                    <p data-test-label="default-bio">
+                      <p data-test-label="default-bio">
                       Read
                       <a
                         href="https://www.freecodecamp.org/news/author/{{
@@ -3157,7 +3159,7 @@ else
                 </section>
                 {# END: partials/byline.njk, show bio #}
               </div>
-              <hr />
+              <hr/>
             </section>
             <div class="banner-ad bottom">
               {# START: partials/ad.njk #}
@@ -3177,7 +3179,8 @@ else
           </article>
         </div>
       </main>
-      {# END: layouts/post.njk #} {# START: /partials/footer.njk #}
+      {# END: layouts/post.njk #}
+      {# START: /partials/footer.njk #}
       <footer class="site-footer">
         <div class="footer-top">
           <div class="footer-desc-col">
@@ -3314,7 +3317,7 @@ else
                         src="https://cdn.freecodecamp.org/platform/universal/apple-store-badge.svg"
                         lang="en"
                         alt="Download on the App Store"
-                      />
+/>
                     </a>
                   </li>
                   <li>
@@ -3327,7 +3330,7 @@ else
                         src="https://cdn.freecodecamp.org/platform/universal/google-play-badge.svg"
                         lang="en"
                         alt="Get it on Google Play"
-                      />
+/>
                     </a>
                   </li>
                 </ul>
