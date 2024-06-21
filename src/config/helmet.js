@@ -21,9 +21,15 @@ export default {
         'https://api.spotify.com',
         'https://api.github.com',
         'https://api.twitter.com',
-        'https://api.codesandbox.io'
+        'https://api.codesandbox.io',
+        'https://cdn.freecodecamp.org'
       ],
-      fontSrc: ["'self'", 'data:', 'https://fonts.gstatic.com'],
+      fontSrc: [
+        "'self'",
+        'data:',
+        'https://fonts.gstatic.com',
+        'https://cdn.freecodecamp.org'
+      ],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
       frameSrc: [
