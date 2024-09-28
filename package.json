@@ -19,7 +19,7 @@
     "express": "4.21.0",
     "express-rate-limit": "7.4.0",
     "graphql-request": "7.1.0",
-    "helmet": "7.1.0",
+    "helmet": "7.2.0",
     "morgan": "1.10.0",
     "nunjucks": "3.2.4",
     "winston": "3.14.2"
