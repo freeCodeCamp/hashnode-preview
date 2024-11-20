@@ -6,6 +6,12 @@ export default {
         "'self'",
         "'unsafe-inline'",
         'https://webembeds.com',
+        'https://platform.twitter.com',
+        'https://cdn.freecodecamp.org'
+      ],
+      scriptSrcAttr: [
+        "'self'",
+        "'unsafe-inline'",
         'https://cdn.freecodecamp.org'
       ],
       styleSrc: [
@@ -40,6 +46,7 @@ export default {
         'https://codepen.io',
         'https://codesandbox.io',
         'https://twitter.com',
+        'https://platform.twitter.com',
         'https://x.com',
         'https://gist.github.com',
         'https://glitch.com',
