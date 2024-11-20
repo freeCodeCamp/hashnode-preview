@@ -8,6 +8,11 @@ export default {
         'https://webembeds.com',
         'https://cdn.freecodecamp.org'
       ],
+      scriptSrcAttr: [
+        "'self'",
+        "'unsafe-inline'",
+        'https://cdn.freecodecamp.org'
+      ],
       styleSrc: [
         "'self'",
         "'unsafe-inline'",
