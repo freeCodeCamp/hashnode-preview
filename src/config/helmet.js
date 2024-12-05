@@ -7,6 +7,8 @@ export default {
         "'unsafe-inline'",
         'https://webembeds.com',
         'https://platform.twitter.com',
+        'ajax.cloudflare.com',
+        'static.cloudflareinsights.com',
         'https://cdn.freecodecamp.org'
       ],
       scriptSrcAttr: [
