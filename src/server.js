@@ -37,7 +37,7 @@ app.use(cacheControl);
 app.use(router);
 
 // Handle all other routes
-app.all('*', (_req, res) => {
+app.all('/*splat', (_req, res) => {
   logger.warn('Invalid URI request attempted.');
   res.status(404).render('error.njk', { error: 'Invalid URI Requested' });
 });
