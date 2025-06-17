@@ -1,13 +1,13 @@
-FROM node:20-alpine as builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install -g pnpm \
+RUN npm install -g pnpm@10 \
   && pnpm install --prod
 
 COPY . .
 
-FROM node:20-alpine
+FROM node:22-alpine
 WORKDIR /app
 
 COPY --from=builder /app .
