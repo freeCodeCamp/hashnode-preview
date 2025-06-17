@@ -7,8 +7,8 @@
   "description": "Post preview service for Hashnode",
   "type": "module",
   "engines": {
-    "node": ">=20",
-    "npm": ">=10"
+    "node": ">=22",
+    "pnpm": ">=10"
   },
   "scripts": {
     "start": "node --watch --trace-warnings ./src/server.js"
