@@ -36,11 +36,11 @@
           </section>
           <h1 class="post-full-title">{{ title }}</h1>
         </header>
-        <div
-          class="post-full-author-header"
-          data-test-label="author-header-no-bio"
-        >
-          {% if post.primary_author.name != "freeCodeCamp.org" %}
+        {% if post.author.name !== "freeCodeCamp" %}
+          <div
+            class="post-full-author-header"
+            data-test-label="author-header-no-bio"
+          >
             {# TODO: Update so original author / translator
             bylines show in previews #}
             {# START: partials/byline.njk, no bio #}
@@ -93,8 +93,8 @@
               </section>
             </section>
             {# END: partials/byline.njk, no bio #}
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
         <figure class="post-full-image">
           {# START: feature image shortcode #}
           <picture>
@@ -140,77 +140,79 @@
             </div>
           </div>
           <hr />
-          <div
-            class="post-full-author-header"
-            data-test-label="author-header-with-bio"
-          >
-            {# TODO: Update so original author / translator
-            bylines show in previews #}
-            {# START: partials/byline.njk, show bio #}
-            <section class="author-card" data-test-label="author-card">
-              {% if post.author.profilePicture %}
-                {# START: image shortcode #}
-                <img
-                  srcset="{{ post.author.profilePicture }} 60w"
-                  sizes="60px"
-                  src="{{ post.author.profilePicture }}"
-                  class="author-profile-image"
-                  alt="{{ post.author.name }}"
-                  onerror="this.style.display='none'"
-                  loading="lazy"
-                  data-test-label="author-profile-image"
-                />
-                {# END: image shortcode #}
-              {% else %}
-                <span class="avatar-wrapper">
-                  {# START: partials/icons/avatar.njk #}
-                  <svg
-                    role="img"
-                    style="pointer-events: none"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    data-test-label="avatar"
-                  >
-                    <title>{{ post.author.name }}</title>
-                    <g fill="none" fill-rule="evenodd">
-                      <path
-                        d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z"
-                        fill="#FFF"
-                      />
-                    </g>
-                  </svg>
-                  {# END: partials/icons/avatar.njk #}
-                </span>
-              {% endif %}
-              <section class="author-card-content">
-                <span class="author-card-name">
-                  <a
-                    href="https://www.freecodecamp.org/news/author/{{
-                              post.author.username
-                            }}/"
-                    data-test-label="profile-link"
-                  >
-                    {{ post.author.name }}
-                  </a>
-                </span>
-                {% if post.author.bio.text %}
-                  <p data-test-label="author-bio">{{ post.author.bio.text }}</p>
+          {% if post.author.name !== "freeCodeCamp" %}
+            <div
+              class="post-full-author-header"
+              data-test-label="author-header-with-bio"
+            >
+              {# TODO: Update so original author / translator
+              bylines show in previews #}
+              {# START: partials/byline.njk, show bio #}
+              <section class="author-card" data-test-label="author-card">
+                {% if post.author.profilePicture %}
+                  {# START: image shortcode #}
+                  <img
+                    srcset="{{ post.author.profilePicture }} 60w"
+                    sizes="60px"
+                    src="{{ post.author.profilePicture }}"
+                    class="author-profile-image"
+                    alt="{{ post.author.name }}"
+                    onerror="this.style.display='none'"
+                    loading="lazy"
+                    data-test-label="author-profile-image"
+                  />
+                  {# END: image shortcode #}
                 {% else %}
-                  <p data-test-label="default-bio">
-                    Read
+                  <span class="avatar-wrapper">
+                    {# START: partials/icons/avatar.njk #}
+                    <svg
+                      role="img"
+                      style="pointer-events: none"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      data-test-label="avatar"
+                    >
+                      <title>{{ post.author.name }}</title>
+                      <g fill="none" fill-rule="evenodd">
+                        <path
+                          d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z"
+                          fill="#FFF"
+                        />
+                      </g>
+                    </svg>
+                    {# END: partials/icons/avatar.njk #}
+                  </span>
+                {% endif %}
+                <section class="author-card-content">
+                  <span class="author-card-name">
                     <a
                       href="https://www.freecodecamp.org/news/author/{{
                                 post.author.username
                               }}/"
-                      >more posts</a
-                    >.
-                  </p>
-                {% endif %}
+                      data-test-label="profile-link"
+                    >
+                      {{ post.author.name }}
+                    </a>
+                  </span>
+                  {% if post.author.bio.text %}
+                    <p data-test-label="author-bio">{{ post.author.bio.text }}</p>
+                  {% else %}
+                    <p data-test-label="default-bio">
+                      Read
+                      <a
+                        href="https://www.freecodecamp.org/news/author/{{
+                                  post.author.username
+                                }}/"
+                        >more posts</a
+                      >.
+                    </p>
+                  {% endif %}
+                </section>
               </section>
-            </section>
             {# END: partials/byline.njk, show bio #}
-          </div>
-          <hr />
+            </div>
+            <hr />
+          {% endif %}
         </section>
         <div class="banner-ad bottom">
           {# START: partials/ad.njk #}
