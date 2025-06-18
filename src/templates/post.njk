@@ -122,7 +122,7 @@
         </figure>
         <section class="post-full-content">
           <div class="post-and-sidebar">
-            <section class="post-content" data-test-label="post-content">
+            <section class="post-content {{ 'medium-migrated-article' if (post.author.name === 'freeCodeCamp.org') }}" data-test-label="post-content">
               {{ post.content.html | safe }}
             </section>
             <div class="sidebar">
