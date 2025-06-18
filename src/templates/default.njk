@@ -185,7 +185,6 @@
       html {
         box-sizing: border-box;
         font-family: var(--font-family-sans-serif);
-
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
       }
@@ -269,7 +268,6 @@
       input[type="reset"],
       input[type="submit"] {
         cursor: pointer;
-
         -webkit-appearance: button;
       }
       button[disabled],
@@ -298,7 +296,6 @@
       }
       input[type="search"] {
         box-sizing: content-box;
-
         -webkit-appearance: textfield;
       }
       input[type="search"]::-webkit-search-cancel-button,
@@ -541,6 +538,11 @@
       .outer {
         position: relative;
         padding: 0 4vw;
+      }
+      .inner {
+        margin: 0 auto;
+        max-width: 1060px;
+        width: 100%;
       }
       .site-header {
         position: fixed;
@@ -1153,9 +1155,7 @@
       .post-full-content h4:target,
       .post-full-content h5:target,
       .post-full-content h6:target {
-        scroll-margin-top: calc(
-          var(--header-height) + 44px + 0.75em
-        );
+        scroll-margin-top: calc(var(--header-height) + 44px + 0.75em);
       }
       .post-full-content li {
         word-break: break-word;
@@ -2464,7 +2464,6 @@
         width: 100%;
         overflow-x: hidden;
       }
-
     </style>
     {# END: /assets/css/screen.css #}
     {# START: /assets/css/search-bar.css #}
