@@ -23,6 +23,6 @@
     "helmet": "8.1.0",
     "morgan": "1.10.1",
     "nunjucks": "3.2.4",
-    "winston": "3.17.0"
+    "winston": "3.18.0"
   }
 }
