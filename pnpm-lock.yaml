@@ -18,8 +18,8 @@ importers:
         specifier: 7.5.1
         version: 7.5.1(express@5.1.0)
       graphql-request:
-        specifier: 7.3.4
-        version: 7.3.4(graphql@16.8.2)
+        specifier: 7.3.5
+        version: 7.3.5(graphql@16.8.2)
       helmet:
         specifier: 8.1.0
         version: 8.1.0
@@ -223,8 +223,8 @@ packages:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
 
-  graphql-request@7.3.4:
-    resolution: {integrity: sha512-kbpP5dw9hHIL5jN/2VS2JU0/Sc1hlsj7zrYBKSDiYd5iG8QfX7P79u26ZBi84eAijsqYVZEpLvCCwEzVxscWhg==}
+  graphql-request@7.3.5:
+    resolution: {integrity: sha512-yrikPPBQFrHTCEw+Nr89vcKkhSOaKk1a4i1aoK0q2pJp0TkkH+HxJXKeVDqzHSYAEoFoNqKmNuqda1tubgaGZQ==}
     peerDependencies:
       graphql: 14 - 16
 
@@ -660,7 +660,7 @@ snapshots:
 
   gopd@1.2.0: {}
 
-  graphql-request@7.3.4(graphql@16.8.2):
+  graphql-request@7.3.5(graphql@16.8.2):
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.8.2)
       graphql: 16.8.2
