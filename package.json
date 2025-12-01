@@ -17,7 +17,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "dotenv": "16.6.1",
-    "express": "5.1.0",
+    "express": "5.2.0",
     "express-rate-limit": "7.5.1",
     "graphql-request": "7.3.5",
     "helmet": "8.1.0",
