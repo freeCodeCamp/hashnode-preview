@@ -51,7 +51,7 @@ const draftQuery = gql`
   }
 `;
 
-const postQuery = gql`
+const postBySlugQuery = gql`
   query GetPost($host: String!, $slug: String!) {
     publication(host: $host) {
       post(slug: $slug) {
@@ -67,19 +67,44 @@ const postQuery = gql`
   }
 `;
 
+const postByIdQuery = gql`
+  query GetPostById($id: ID!) {
+    post(id: $id) {
+      ${commonFields}
+      tags {
+        id
+        name
+        slug
+      }
+      publishedAt
+    }
+  }
+`;
+
 export async function fetchContent(idOrSlug) {
   const isValidObjectId =
     idOrSlug.length === 24 && /^[0-9a-fA-F]{24}$/.test(idOrSlug);
   const HASHNODE_HOST = process.env.HASHNODE_HOST || 'handle.hashnode.dev';
 
   try {
-    // Fetch if it's a draft from the drafts endpoint
     if (isValidObjectId) {
-      const response = await request(endpoint, draftQuery, { id: idOrSlug });
-      return response.draft;
-      // Fetch if it's a post from the publication endpoint
+      // Try draft first, then fall back to post-by-id (published posts also
+      // have 24-char hex cuid values)
+      try {
+        const response = await request(endpoint, draftQuery, {
+          id: idOrSlug
+        });
+        if (response.draft) return response.draft;
+      } catch {
+        // Draft not found — try as a published post id
+      }
+
+      const response = await request(endpoint, postByIdQuery, {
+        id: idOrSlug
+      });
+      return response.post;
     } else {
-      const response = await request(endpoint, postQuery, {
+      const response = await request(endpoint, postBySlugQuery, {
         host: HASHNODE_HOST,
         slug: idOrSlug
       });
