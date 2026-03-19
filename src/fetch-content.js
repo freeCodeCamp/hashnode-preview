@@ -5,7 +5,6 @@ const endpoint = 'https://gql.hashnode.com/';
 const commonFields = `
   id
   title
-  slug
   author {
     id
     username
@@ -56,6 +55,7 @@ const postBySlugQuery = gql`
     publication(host: $host) {
       post(slug: $slug) {
         ${commonFields}
+        slug
         tags {
           id
           name
@@ -71,6 +71,7 @@ const postByIdQuery = gql`
   query GetPostById($id: ID!) {
     post(id: $id) {
       ${commonFields}
+      slug
       tags {
         id
         name
