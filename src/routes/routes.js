@@ -1,6 +1,7 @@
 import express from 'express';
 import { fetchContent } from '../fetch-content.js';
 import { logger } from '../config/logger.js';
+import { processPost } from '../process-post.js';
 
 const router = express.Router();
 
@@ -27,8 +28,7 @@ router.get('/:idOrSlug', async (req, res) => {
 
     logger.info(`Post retrieved successfully for id / slug: ${idOrSlug}`);
 
-    if (!post.publishedAt)
-      post.publishedAt = new Date(post.updatedAt).toLocaleDateString();
+    post = await processPost(post);
 
     res.render('post.njk', { post });
   } catch (error) {
