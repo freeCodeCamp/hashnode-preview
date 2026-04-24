@@ -26,7 +26,11 @@ const commonFields = `
   content {
     html
   }
-  readTimeInMinutes
+  tags {
+    id
+    name
+    slug
+  }
   updatedAt
 `;
 
@@ -34,18 +38,6 @@ const draftQuery = gql`
   query GetDraft($id: ObjectId!) {
     draft(id: $id) {
       ${commonFields}
-      tags: tagsV2 {
-        __typename
-          ... on Tag {
-          id
-          name
-          slug
-        }
-        ... on DraftBaseTag {
-          name
-          slug
-        }
-      }
     }
   }
 `;
@@ -56,11 +48,7 @@ const postBySlugQuery = gql`
       post(slug: $slug) {
         ${commonFields}
         slug
-        tags {
-          id
-          name
-          slug
-        }
+        readTimeInMinutes
         publishedAt
       }
     }
@@ -72,11 +60,7 @@ const postByIdQuery = gql`
     post(id: $id) {
       ${commonFields}
       slug
-      tags {
-        id
-        name
-        slug
-      }
+      readTimeInMinutes
       publishedAt
     }
   }
