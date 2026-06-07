@@ -77,6 +77,13 @@ function isNotFoundError(error) {
   );
 }
 
+// A missing or expired HASHNODE_TOKEN surfaces as `extensions.code === 'UNAUTHENTICATED'`.
+function isAuthError(error) {
+  if (!(error instanceof ClientError)) return false;
+  const errors = error.response?.errors ?? [];
+  return errors.some(e => e?.extensions?.code === 'UNAUTHENTICATED');
+}
+
 export async function fetchContent(idOrSlug) {
   const isValidObjectId =
     idOrSlug.length === 24 && /^[0-9a-fA-F]{24}$/.test(idOrSlug);
@@ -84,13 +91,28 @@ export async function fetchContent(idOrSlug) {
 
   try {
     if (isValidObjectId) {
+      // Drafts are private, so Hashnode requires an authenticated request.
+      const draftHeaders = process.env.HASHNODE_TOKEN
+        ? { Authorization: process.env.HASHNODE_TOKEN }
+        : undefined;
+
       // Try draft first; published posts share the 24-char hex id shape.
       try {
-        const response = await request(endpoint, draftQuery, {
-          id: idOrSlug
-        });
+        const response = await request(
+          endpoint,
+          draftQuery,
+          { id: idOrSlug },
+          draftHeaders
+        );
         if (response.draft) return response.draft;
       } catch (error) {
+        if (isAuthError(error)) {
+          logger.error(
+            'Hashnode rejected the draft request as unauthenticated. ' +
+              'Check that HASHNODE_TOKEN is set and the personal access token is still valid.'
+          );
+          throw error;
+        }
         if (!isNotFoundError(error)) throw error;
       }
 
