@@ -22,7 +22,7 @@
     "graphql-request": "7.4.0",
     "helmet": "8.3.0",
     "jsdom": "29.0.0",
-    "morgan": "1.10.1",
+    "morgan": "1.12.1",
     "nunjucks": "3.2.4",
     "sanitize-html": "2.18.0",
     "slug": "11.0.1",
