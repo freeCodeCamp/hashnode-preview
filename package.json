@@ -10,7 +10,7 @@
     "node": ">=24",
     "pnpm": ">=10"
   },
-  "packageManager": "pnpm@10.34.6",
+  "packageManager": "pnpm@10.34.7",
   "scripts": {
     "start": "node --watch --trace-warnings ./src/server.js"
   },
